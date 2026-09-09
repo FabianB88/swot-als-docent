@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="SWOT als docent: nulmeting voorafgaand aan het BDB-traject.">
+<style>
+  :root { color-scheme: light dark; }
+  html, body { margin: 0; }
+  img { max-width: 100%; }
+  [hidden] { display: none !important; }
+</style>
+<title>SWOT als docent</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap">
+<style>
+  :root {
+    --paper: #FAF7F9;
+    --panel: #FFFFFF;
+    --panel-alt: #F5F0F3;
+    --ink: #1B1419;
+    --ink-2: #574B53;
+    --ink-3: #8A7C84;
+    --rule: #E2D8DE;
+    --rule-strong: #CBBCC5;
+    --magenta: #E5007D;
+    --magenta-ink: #B4005F;
+    --magenta-soft: #FBE4F0;
+    --slate: #33414F;
+    --slate-ink: #33414F;
+    --slate-soft: #E8ECF0;
+    --shadow: 0 1px 2px rgba(27, 20, 25, .05);
+    --sans: "Familjen Grotesk", "Helvetica Neue", Arial, sans-serif;
+    --serif: "Newsreader", Georgia, "Times New Roman", serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #141013;
+      --panel: #1C171B;
+      --panel-alt: #221B21;
+      --ink: #F3ECF0;
+      --ink-2: #B9AAB3;
+      --ink-3: #8B7C85;
+      --rule: #362E34;
+      --rule-strong: #4C424A;
+      --magenta: #FF4DA6;
+      --magenta-ink: #FF7BBD;
+      --magenta-soft: #3B1027;
+      --slate: #9FB6C9;
+      --slate-ink: #A9BFD1;
+      --slate-soft: #1D262F;
+      --shadow: 0 1px 2px rgba(0, 0, 0, .35);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --paper: #141013;
+    --panel: #1C171B;
+    --panel-alt: #221B21;
+    --ink: #F3ECF0;
+    --ink-2: #B9AAB3;
+    --ink-3: #8B7C85;
+    --rule: #362E34;
+    --rule-strong: #4C424A;
+    --magenta: #FF4DA6;
+    --magenta-ink: #FF7BBD;
+    --magenta-soft: #3B1027;
+    --slate: #9FB6C9;
+    --slate-ink: #A9BFD1;
+    --slate-soft: #1D262F;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .35);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 24px 96px;
+  }
+
+  a { color: var(--magenta-ink); }
+  :focus-visible { outline: 2px solid var(--magenta); outline-offset: 3px; }
+
+  /* ---------- masthead ---------- */
+
+  header.masthead {
+    padding: 64px 0 34px;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .eyebrow {
+    font-size: 11.5px;
+    font-weight: 600;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--magenta-ink);
+    margin: 0 0 18px;
+  }
+
+  h1 {
+    font-family: var(--sans);
+    font-size: clamp(38px, 6.2vw, 68px);
+    line-height: 1.02;
+    letter-spacing: -.025em;
+    font-weight: 700;
+    margin: 0 0 20px;
+    text-wrap: balance;
+    max-width: 14ch;
+  }
+
+  .standfirst {
+    font-family: var(--serif);
+    font-size: clamp(17px, 1.9vw, 20px);
+    line-height: 1.55;
+    color: var(--ink-2);
+    max-width: 62ch;
+    margin: 0;
+  }
+
+  .meta-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 34px;
+    padding: 16px 0 0;
+    margin-top: 26px;
+    border-top: 1px solid var(--rule);
+  }
+
+  .meta-strip div {
+    font-size: 12.5px;
+    color: var(--ink-3);
+    letter-spacing: .01em;
+  }
+
+  .meta-strip strong {
+    display: block;
+    font-size: 11px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+
+  .meta-strip span { color: var(--ink); font-size: 14px; }
+
+  /* ---------- matrix ---------- */
+
+  .matrix-frame {
+    margin-top: 44px;
+    display: grid;
+    grid-template-columns: 34px minmax(0, 1fr);
+    gap: 10px;
+  }
+
+  .axis-top {
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    margin-bottom: 10px;
+  }
+
+  .axis-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--rule-strong);
+  }
+
+  .axis-side {
+    grid-column: 1;
+    display: grid;
+    gap: 1px;
+  }
+
+  .axis-side span {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    border-right: 1px solid var(--rule-strong);
+    padding-right: 8px;
+  }
+
+  .matrix {
+    grid-column: 2;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule-strong);
+    border: 1px solid var(--rule-strong);
+  }
+
+  .cell {
+    background: var(--panel);
+    padding: 26px 26px 30px;
+    min-width: 0;
+  }
+
+  .cell.extern { background: var(--panel-alt); }
+
+  .cell-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .mark {
+    font-size: 30px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -.03em;
+  }
+
+  .helpend .mark { color: var(--magenta); }
+  .belemmerend .mark { color: var(--slate); }
+
+  .cell-head h2 {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -.015em;
+    flex: 1;
+  }
+
+  .count {
+    font-size: 12px;
+    color: var(--ink-3);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .coord {
+    display: none;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin: 0 0 10px;
+  }
+
+  .cell ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .cell li {
+    padding: 15px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .cell li:last-child { border-bottom: 0; padding-bottom: 0; }
+
+  .cell li h3 {
+    margin: 0 0 4px;
+    font-size: 15.5px;
+    font-weight: 600;
+    letter-spacing: -.005em;
+    line-height: 1.3;
+  }
+
+  .cell li p {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    max-width: 58ch;
+  }
+
+
+
+
+  /* ---------- section headers ---------- */
+
+  .section-head {
+    margin: 88px 0 0;
+    padding-bottom: 14px;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .section-head h2 {
+    margin: 0;
+    font-size: clamp(26px, 3.4vw, 36px);
+    font-weight: 700;
+    letter-spacing: -.022em;
+  }
+
+  .section-head p {
+    font-family: var(--serif);
+    margin: 12px 0 0;
+    font-size: 17px;
+    line-height: 1.6;
+    color: var(--ink-2);
+    max-width: 64ch;
+  }
+
+  /* ---------- confrontatie ---------- */
+
+  .confront { display: grid; gap: 0; }
+
+  .pair {
+    display: grid;
+    grid-template-columns: 130px minmax(0, 1fr);
+    gap: 0 32px;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: start;
+  }
+
+  .pair-key {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    line-height: 1.4;
+  }
+
+  .pair-key .x { color: var(--ink-3); font-weight: 400; padding: 0 3px; }
+  .pair-key .s, .pair-key .o { color: var(--magenta-ink); }
+  .pair-key .w, .pair-key .t { color: var(--slate-ink); }
+
+  .pair-key small {
+    display: block;
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+    margin-top: 5px;
+  }
+
+  .pair h3 {
+    margin: 0 0 8px;
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -.014em;
+    line-height: 1.28;
+    text-wrap: balance;
+  }
+
+  .pair p {
+    font-family: var(--serif);
+    margin: 0;
+    font-size: 16.5px;
+    line-height: 1.62;
+    color: var(--ink-2);
+    max-width: 66ch;
+  }
+
+  /* ---------- richtingen ---------- */
+
+  .richtingen {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1px;
+    background: var(--rule-strong);
+    border: 1px solid var(--rule-strong);
+    margin-top: 34px;
+  }
+
+  .richting {
+    background: var(--panel);
+    padding: 26px 24px 28px;
+  }
+
+  .richting .tag {
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--magenta-ink);
+    display: block;
+    margin-bottom: 12px;
+  }
+
+  .richting h3 {
+    margin: 0 0 10px;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -.014em;
+    line-height: 1.3;
+  }
+
+  .richting p {
+    margin: 0;
+    font-size: 14.5px;
+    line-height: 1.6;
+    color: var(--ink-2);
+  }
+
+  footer.colofon {
+    margin-top: 72px;
+    padding-top: 18px;
+    border-top: 1px solid var(--rule);
+    font-size: 13px;
+    color: var(--ink-3);
+    max-width: 68ch;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 820px) {
+    .matrix-frame { grid-template-columns: minmax(0, 1fr); }
+    .axis-top, .axis-side { display: none; }
+    .matrix { grid-column: 1; grid-template-columns: minmax(0, 1fr); }
+    .coord { display: block; }
+    .pair { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+    .pair-key small { display: inline; margin-left: 8px; }
+    header.masthead { padding-top: 44px; }
+  }
+
+  @media print {
+    body { background: #fff; color: #000; }
+    .cell, .richting { break-inside: avoid; }
+    .section-head { margin-top: 40px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <p class="eyebrow">Nulmeting · BKE/SKE-dossier</p>
+    <h1>SWOT als docent</h1>
+    <p class="standfirst">Nulmeting voorafgaand aan het BDB-traject. Opgebouwd uit de eigen onderwijs- en coachingspraktijk en uit een vooruitblikkende brief aan zichzelf, geschreven alsof de BDB al negen maanden achter de rug is. Sterktes en zwaktes gaan over het eigen handelen, kansen en bedreigingen over de omgeving waarin dat handelen plaatsvindt.</p>
+    <div class="meta-strip">
+      <div><strong>Docent</strong><span>Fabian</span></div>
+      <div><strong>Context</strong><span>HAN, Minor CE en Green Office</span></div>
+      <div><strong>Stand</strong><span>Voor start BDB, BKE afgerond</span></div>
+      <div><strong>Datum</strong><span>september 2026</span></div>
+    </div>
+  </header>
+
+
+  <div class="matrix-frame">
+    <div class="axis-top">
+      <div class="axis-label">Helpend</div>
+      <div class="axis-label">Belemmerend</div>
+    </div>
+    <div class="axis-side">
+      <span>Intern</span>
+      <span>Extern</span>
+    </div>
+
+    <div class="matrix">
+
+      <!-- STERKTES -->
+      <section class="cell helpend intern">
+        <p class="coord">Intern · Helpend</p>
+        <div class="cell-head">
+          <span class="mark">S</span>
+          <h2>Sterktes</h2>
+          <span class="count">8 punten</span>
+        </div>
+        <ul>
+          <li>
+            <h3>Coaching over de volle breedte</h3>
+            <p>Brede kennis en vaardigheden waardoor vrijwel elke begeleidingssituatie te bedienen is, individueel en in groepen. Bij ORM leveren de studentevaluaties op de coaching structureel tienen, negens en achten op.</p>
+          </li>
+          <li>
+            <h3>Groepsdynamiek beheersen</h3>
+            <p>Houdt de hele groep erbij, maakt de afstand tot studenten klein en zet humor functioneel in. Werkt zonder PowerPoint; de aandacht komt uit het contact en niet uit het materiaal.</p>
+          </li>
+          <li>
+            <h3>Overdracht gericht op begrip</h3>
+            <p>Legt niet alleen uit wat, maar waarom. Stuurt op begrijpen en toepassen in plaats van op reproduceren.</p>
+          </li>
+          <li>
+            <h3>Motivatiepsychologie toepassen</h3>
+            <p>Begrijpt wat studenten in beweging brengt en gebruikt dat bewust in les en begeleiding, in plaats van te vertrouwen op opdrachtdruk.</p>
+          </li>
+          <li>
+            <h3>Studenten op gang helpen</h3>
+            <p>Doorbreekt startblokkades en krijgt projecten van de grond, ook bij groepen die vastlopen op richting of eigenaarschap.</p>
+          </li>
+          <li>
+            <h3>Beoordelen: scherp en eerlijk</h3>
+            <p>Weegt prestaties consistent en verdedigbaar, met oog voor verschillen binnen een groep. De toetsbekwaamheid is met de afgeronde BKE al geborgd.</p>
+          </li>
+          <li>
+            <h3>Innoveren als grondhouding</h3>
+            <p>Ontwerpt experimenteel onderwijs en zoekt structureel naar anders en beter. Geeft nu AI-onderwijs en ontwikkelt daar zelf materiaal en werkvormen voor.</p>
+          </li>
+          <li>
+            <h3>Aansluiten bij de belevingswereld</h3>
+            <p>Spreekt de taal van studenten en straalt aanwezigheid uit. Dat trekt aandacht en houdt die ook vast over een hele bijeenkomst.</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ZWAKTES -->
+      <section class="cell belemmerend intern">
+        <p class="coord">Intern · Belemmerend</p>
+        <div class="cell-head">
+          <span class="mark">W</span>
+          <h2>Zwaktes</h2>
+          <span class="count">9 punten</span>
+        </div>
+        <ul>
+          <li>
+            <h3>Veel helpen, zonder expliciete afweging</h3>
+            <p>Helpt studenten veel: legt uit, geeft een methode en een route mee. Dat brengt ze vooruit, en de vraag of het leerkundig steeds de beste keuze is blijft open. Wanneer helpen het leren versnelt en wanneer het het overneemt, is nu geen bewuste afweging maar een aanvoelen.</p>
+          </li>
+          <li>
+            <h3>Didactisch coachen zonder expliciet kader</h3>
+            <p>Geen vaste handvatten voor het coachen zelf, en daardoor blijvende onzekerheid of de gekozen aanpak op dat moment de juiste is.</p>
+          </li>
+          <li>
+            <h3>Ontwerp op intuïtie, niet op onderbouwing</h3>
+            <p>Werkvormen worden ter plekke bedacht en werken in de praktijk, maar het onderwijskundige referentiekader onder die keuzes ontbreekt nog. Daardoor is een keuze lastig te verantwoorden en lastig over te dragen.</p>
+          </li>
+          <li>
+            <h3>Smal repertoire aan werkvormen</h3>
+            <p>Buiten vaardigheidstrainingen komen weinig gevarieerde werkvormen aan bod. De les leunt op het eigen optreden in plaats van op de structuur van de werkvorm.</p>
+          </li>
+          <li>
+            <h3>De lat: iedereen moet het tof vinden</h3>
+            <p>Legt de lat zo hoog dat elke student de les tof moet vinden. Dat is een groot deel van waarom de betrokkenheid hoog ligt, en tegelijk een maatstaf die bij een volle groep niet altijd haalbaar is. Het risico is dat de meest aanwezige of meest kritische studenten daardoor meer ruimte krijgen dan de rest.</p>
+          </li>
+          <li>
+            <h3>Feedback verwerken gaat indirect</h3>
+            <p>Staat open voor feedback, maar verwerkt die niet ter plekke. Het landt, wordt geïnternaliseerd en komt later vanzelf terug in het handelen. Tussen het horen en het toepassen zit geen zichtbaar moment, waardoor het voor de gever lijkt alsof er niets mee gedaan wordt.</p>
+          </li>
+          <li>
+            <h3>Sterke eigen visie</h3>
+            <p>Geeft richting en scherpte, maar kan de ruimte verdringen voor wat al werkt en voor de inbreng van anderen.</p>
+          </li>
+          <li>
+            <h3>Generaliseert in het beginniveau</h3>
+            <p>Inschatten waar studenten beginnen is altijd al een aandachtspunt geweest en gebeurt bewust. Tegelijk gaat die inschatting over de groep als geheel. Wat de een al weet en de ander nog niet, blijft daarbij buiten beeld.</p>
+          </li>
+          <li>
+            <h3>Zelfsturend leren ontstaat, in plaats van dat het ontworpen wordt</h3>
+            <p>De opdracht of het project bepaalt hoeveel regie de student neemt, in plaats van dat de mate van sturing een expliciete ontwerpkeuze is. Onderwijskundige terminologie, constructive alignment voorop, blijft daarbij op afstand staan omdat de onderliggende logica vanzelfsprekend voelt.</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- KANSEN -->
+      <section class="cell helpend extern">
+        <p class="coord">Extern · Helpend</p>
+        <div class="cell-head">
+          <span class="mark">O</span>
+          <h2>Kansen</h2>
+          <span class="count">4 punten</span>
+        </div>
+        <ul>
+          <li>
+            <h3>De eigen minor als proeftuin</h3>
+            <p>Als coördinator van de minor, nu in relaunch als AI voor Betekeniseconomie, is er ruimte om te ontwerpen, uit te proberen en te evalueren zonder dat er eerst draagvlak georganiseerd hoeft te worden voor elk experiment.</p>
+          </li>
+          <li>
+            <h3>AI als didactisch middel, niet alleen als onderwerp</h3>
+            <p>Er wordt nu AI-onderwijs gegeven. De onbenutte stap is AI inzetten om het leerproces zelf te versterken: feedback, differentiatie, oefening op maat.</p>
+          </li>
+          <li>
+            <h3>Green Office als tweede ontwikkelplek</h3>
+            <p>Daar ligt een expliciet mandaat om aan innoverend onderwijs en gamification te werken, met een andere doelgroep en andere randvoorwaarden dan in de minor.</p>
+          </li>
+          <li>
+            <h3>Zitting in het HAN-beleidsteam AI</h3>
+            <p>Directe invloed op de kaders waarbinnen het eigen onderwijs moet passen, in plaats van die kaders alleen te ondergaan.</p>
+          </li>
+        </ul>
+      </section>
+
+      <!-- BEDREIGINGEN -->
+      <section class="cell belemmerend extern">
+        <p class="coord">Extern · Belemmerend</p>
+        <div class="cell-head">
+          <span class="mark">T</span>
+          <h2>Bedreigingen</h2>
+          <span class="count">5 punten</span>
+        </div>
+        <ul>
+          <li>
+            <h3>Voorbereidingstijd verdwijnt uit de planning</h3>
+            <p>Lessen gaan ook met een half uur uitdenken goed. Daardoor wordt voorbereidingstijd bij drukte niet meer ingepland, en niet alleen ingekort. Dat raakt niet de les van morgen, maar wel het onderbouwd ontwerpen op termijn.</p>
+          </li>
+          <li>
+            <h3>Werkdruk laat geen ruimte voor lesanalyse</h3>
+            <p>Systematisch evalueren van eigen lessen komt er structureel bij. Het gebeurt nu vooral intern en in gesprek met een paar mensen, waardoor er weinig vastligt.</p>
+          </li>
+          <li>
+            <h3>Verdeelde aandacht over drie functies</h3>
+            <p>Coördinatie, onderwijs en Green Office trekken tegelijk. Verdieping op één ervan verliest het van de dagelijkse vraag uit de andere twee.</p>
+          </li>
+          <li>
+            <h3>Vernieuwing in de minor is een afstemmingsproces</h3>
+            <p>De ruimte is er, maar het systeem houdt vernieuwing soms tegen. Elke verandering blijft een politiek proces van afstemming, wat het tempo bepaalt en niet de inhoud.</p>
+          </li>
+          <li>
+            <h3>AI-beleid op de HAN blijft weerbarstig</h3>
+            <p>Wat wel en niet mag met AI in onderwijs is nog niet vastgelegd, ook niet vanuit het beleidsteam. Dat maakt experimenten kwetsbaar voor kaders die er later overheen komen.</p>
+          </li>
+        </ul>
+      </section>
+
+    </div>
+  </div>
+
+  <div class="section-head">
+    <h2>Confrontatie</h2>
+    <p>Waar kwadranten elkaar raken staat de eigenlijke ontwikkelvraag. Deze vijf combinaties verklaren meer dan de losse punten, omdat een sterkte en een zwakte hier vaak hetzelfde mechanisme blijken te zijn.</p>
+  </div>
+
+  <div class="confront">
+
+    <div class="pair">
+      <div class="pair-key"><span class="s">S</span><span class="x">×</span><span class="w">W</span><small>Overdracht</small></div>
+      <div>
+        <h3>De kracht om iets te laten begrijpen is dezelfde kracht die het lastig maakt om je in te houden</h3>
+        <p>Uitleggen waarom, aansluiten bij de belevingswereld en mensen op gang helpen zijn geen losse sterktes maar één vermogen. Datzelfde vermogen roept de openstaande vraag op: helpt het uitleggen de student verder, of neemt het soms over wat hij zelf had kunnen uitzoeken? Het ontwikkelpunt is dus niet minder goed uitleggen, maar die afweging bewust maken in plaats van hem te laten volgen uit de neiging om te helpen.</p>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-key"><span class="s">S</span><span class="x">×</span><span class="t">T</span><small>Voorbereiding</small></div>
+      <div>
+        <h3>Dat het zonder voorbereiding goed gaat, is precies wat de bedreiging voedt</h3>
+        <p>Aanwezigheid en improvisatievermogen dekken de gaten in de voorbereiding af, waardoor de werkdruk geen zichtbare schade oplevert en dus ook niet corrigerend werkt. Het risico zit niet in de lessen van nu, maar in het ontwerp op termijn.</p>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-key"><span class="s">S</span><span class="x">×</span><span class="w">W</span><small>Vernieuwing</small></div>
+      <div>
+        <h3>Altijd anders en beter willen levert experimenteel onderwijs op, en verdringt tegelijk wat al werkt</h3>
+        <p>De innovatiedrang verklaart de eigen minor, de AI-integratie en de gamification bij Green Office. Diezelfde drang maakt het moeilijk om iets te laten staan en om de inbreng van anderen ruimte te geven. De winst van het BDB-traject zit hier niet in nog een vernieuwing, maar in beargumenteerd kunnen kiezen wat níet vernieuwd wordt.</p>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-key"><span class="w">W</span><span class="x">×</span><span class="o">O</span><small>Kader</small></div>
+      <div>
+        <h3>De proeftuin bestaat al, de onderbouwing is wat er nog bij moet</h3>
+        <p>Het smalle werkvormenrepertoire en het ontbrekende referentiekader vragen vooral om een plek om het uit te proberen. Die ruimte ligt er dubbel, in de eigen minor en bij Green Office. Wat ontbreekt is dus niet gelegenheid maar registratie: keuzes vooraf onderbouwen en achteraf evalueren.</p>
+      </div>
+    </div>
+
+    <div class="pair">
+      <div class="pair-key"><span class="o">O</span><span class="x">×</span><span class="t">T</span><small>Beleid</small></div>
+      <div>
+        <h3>De onduidelijkheid over AI-beleid is de enige bedreiging waar direct op te sturen valt</h3>
+        <p>Werkdruk, verdeelde functies en het afstemmingsproces in de minor zijn omstandigheden om mee te dealen. Het AI-beleid niet: de zitting in het beleidsteam maakt van deze bedreiging een dossier waar invloed op uit te oefenen is. Dat verandert wat er in het portfolio over gezegd kan worden, van last naar positie.</p>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="section-head">
+    <h2>Ontwikkelrichtingen</h2>
+    <p>Vier richtingen die volgen uit de confrontatie. Elk is zo geformuleerd dat er tijdens het BDB-traject iets waarneembaars van te maken valt, want een ontwikkelpunt zonder handeling blijft een voornemen.</p>
+  </div>
+
+  <div class="richtingen">
+    <div class="richting">
+      <span class="tag">Uit S × W, overdracht</span>
+      <h3>De afweging om te helpen expliciet maken</h3>
+      <p>Leg bij een paar begeleidingsmomenten vast waarom je wel of niet uitlegde, en wat de student daarna deed. Daarmee wordt zichtbaar wanneer helpen het leren versnelde en wanneer niet, en heb je iets om je keuze op te baseren in plaats van aanvoelen.</p>
+    </div>
+    <div class="richting">
+      <span class="tag">Uit S × T, voorbereiding</span>
+      <h3>Voorbereidingstijd inplannen als ontwerptijd</h3>
+      <p>Niet omdat de les anders misgaat, maar omdat onderbouwing tijd kost die improvisatie niet vraagt. Eén vast blok per lesweek is genoeg om het patroon te doorbreken waarin voorbereiding als eerste sneuvelt.</p>
+    </div>
+    <div class="richting">
+      <span class="tag">Uit W × O, kader</span>
+      <h3>Twee werkvormen buiten de vaardigheidstrainingen</h3>
+      <p>Kies er twee, koppel elk aan een leerdoel en aan een onderbouwing, en evalueer ze in de eigen minor. Dat vult het smalle repertoire en het ontbrekende kader in één beweging, op de plek waar de ruimte al ligt.</p>
+    </div>
+    <div class="richting">
+      <span class="tag">Uit W, feedback</span>
+      <h3>Feedback zichtbaar terugkoppelen</h3>
+      <p>Je verwerkt feedback door hem eerst te laten landen, wat voor de gever niet zichtbaar is. Eén regel terug op het moment zelf, wat je ermee gaat doen en wat niet, laat zien dat je het weegt in plaats van dat je er niets mee doet.</p>
+    </div>
+  </div>
+
+  <footer class="colofon">
+    Samengesteld voorafgaand aan het BDB-traject, op basis van de eigen onderwijs- en coachingspraktijk en een vooruitblikkende brief aan zichzelf waarin de gewenste ontwikkeling is beschreven alsof die al had plaatsgevonden.
+  </footer>
+
+</div>
+
+</body>
+</html>
