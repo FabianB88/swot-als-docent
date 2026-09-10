@@ -472,6 +472,73 @@
 
   .section-head h2 .by { color: var(--ink-3); font-weight: 500; }
 
+  /* ---------- bestanden ---------- */
+
+  .files {
+    list-style: none;
+    margin: 48px 0 0;
+    padding: 0;
+    border-top: 2px solid var(--ink);
+  }
+
+  .file {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 16px 32px;
+    align-items: center;
+    padding: 26px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .file h3 {
+    margin: 0 0 6px;
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -.014em;
+    line-height: 1.28;
+  }
+
+  .file p {
+    margin: 0;
+    font-family: var(--serif);
+    font-size: 16.5px;
+    line-height: 1.55;
+    color: var(--ink-2);
+    max-width: 60ch;
+  }
+
+  .file .meta {
+    display: block;
+    margin-top: 10px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .file-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px; }
+
+  .btn-download {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 18px;
+    background: var(--ink);
+    color: var(--paper);
+    font-size: 14.5px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 2px;
+    white-space: nowrap;
+  }
+
+  .btn-download:hover { background: var(--magenta-ink); }
+
+  .btn-download svg { width: 18px; height: 18px; flex: none; }
+
+  .file-actions .view { font-size: 14px; color: var(--ink-2); }
+
   /* ---------- brief ---------- */
 
   .letter { margin-top: 48px; max-width: 64ch; }
@@ -613,6 +680,7 @@
     header.masthead { padding-top: 44px; }
     header.site { padding-top: 44px; }
     .theme { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+    .file { grid-template-columns: minmax(0, 1fr); }
   }
 
   @media print {
@@ -644,6 +712,7 @@
     <button type="button" role="tab" id="tab-swot" aria-controls="panel-swot" aria-selected="true" data-hash="swot">SWOT</button>
     <button type="button" role="tab" id="tab-leerdoelen" aria-controls="panel-leerdoelen" aria-selected="false" tabindex="-1" data-hash="leerdoelen">Leerdoelen</button>
     <button type="button" role="tab" id="tab-brief" aria-controls="panel-brief" aria-selected="false" tabindex="-1" data-hash="brief">Brief aan mezelf</button>
+    <button type="button" role="tab" id="tab-bestanden" aria-controls="panel-bestanden" aria-selected="false" tabindex="-1" data-hash="bestanden">Bestanden</button>
   </div>
 
   <section class="panel" id="panel-swot" role="tabpanel" aria-labelledby="tab-swot">
@@ -994,6 +1063,33 @@
     <p>Blijven evalueren rondom blended onderwijs is interessant, wat ik al vond gelukkig. Tegelijkertijd gezien het bezig zijn met AI ook in didactiek heb ik hier in het kader van de BDB verder mee geëxperimenteerd en ook AI te kunnen toevoegen aan een vorm van blended leren (naast e learnings e.d.) en hierover iets gemaakt/gepubliceerd.</p>
     <p>Het inschatten van de studenten “het behalen van de aanvangswaarde” was al een belangrijk goed voor mij. Tegelijkertijd heb ik hier wel kunnen leren om ook de beginsituatie op kennisniveau beter mee om te kunnen gaan. Ik was hier wel bewust van en mee bezig, maar kon hier wel in generaliseren. Ik hoef niet langer altijd diegene te zijn die alles anders of ‘beter’ moet doen. Verder heb ik vertrouwen kunnen vinden in wat al goed gaat en kunnen leren in waar ik nog onzeker over ben. Het één op één begeleiden of in groepen didactisch coachen heb ik meer handvatten voor gekregen. Ik weet beter wanneer mezelf in te houden om iets uit te leggen en wanneer uitleg wel toepasbaar is. Ik weet beter in het algemeen een didactische houding aan te nemen, boven alleen mensen écht iets bijbrengen zoals voorheen. Zelfsturend leren gaat bij mij nu bewuster, in plaats van de situatie enkel het zelfsturend leren te laten bepalen (opdrachten/projecten).</p>
   </div>
+
+  </section>
+
+  <section class="panel" id="panel-bestanden" role="tabpanel" aria-labelledby="tab-bestanden" hidden>
+
+  <header class="masthead">
+    <p class="eyebrow">Bijlagen · BDB-traject</p>
+    <h2 class="panel-title">Bestanden</h2>
+    <p class="standfirst">Documenten bij het dossier, direct te downloaden.</p>
+  </header>
+
+  <ul class="files">
+    <li class="file">
+      <div>
+        <h3>Identificatiematrix hbo-docent</h3>
+        <p>Ingevulde identificatiematrix uit de BDB-cursus: de vijf identiteiten van de hbo-docent, met eigen scores per stelling.</p>
+        <span class="meta">PDF · 492 kB · BDB-cursus groep 1 en 2, 2026</span>
+      </div>
+      <div class="file-actions">
+        <a class="btn-download" href="bestanden/identificatiematrix-hbo-docent-bdb-2026.pdf" download="Identificatiematrix hbo-docent - BDB cursus Groep 1 en 2 (2026).pdf">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
+          Download
+        </a>
+        <a class="view" href="bestanden/identificatiematrix-hbo-docent-bdb-2026.pdf" target="_blank" rel="noopener">Openen in browser</a>
+      </div>
+    </li>
+  </ul>
 
   </section>
 
