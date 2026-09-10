@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="SWOT als docent: nulmeting voorafgaand aan het BDB-traject.">
+<meta name="description" content="BDB-dossier van Fabian: SWOT als docent en leerdoelen voor het BDB-traject.">
 <style>
   :root { color-scheme: light dark; }
   html, body { margin: 0; }
   img { max-width: 100%; }
   [hidden] { display: none !important; }
 </style>
-<title>SWOT als docent</title>
+<title>BDB Fabian Dossier</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&family=Newsreader:ital,opsz,wght@0,6..72,300..600;1,6..72,300..600&display=swap">
@@ -424,6 +424,169 @@
     line-height: 1.6;
   }
 
+  /* ---------- dossier-kop en tabs ---------- */
+
+  header.site { padding: 56px 0 0; }
+
+  header.site h1 { max-width: 20ch; margin-bottom: 0; }
+
+  .tabs {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    display: flex;
+    gap: 30px;
+    margin-top: 34px;
+    background: var(--paper);
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .tabs button {
+    appearance: none;
+    background: none;
+    border: 0;
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    padding: 14px 0 11px;
+    font: inherit;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: .01em;
+    color: var(--ink-3);
+    cursor: pointer;
+  }
+
+  .tabs button:hover { color: var(--ink); }
+  .tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--magenta); }
+
+  .panel > header.masthead { padding-top: 48px; }
+
+  .panel-title {
+    font-size: clamp(32px, 4.6vw, 52px);
+    line-height: 1.04;
+    letter-spacing: -.025em;
+    font-weight: 700;
+    margin: 0 0 20px;
+    text-wrap: balance;
+  }
+
+  /* ---------- leerdoelen ---------- */
+
+  .section-head.first { margin-top: 56px; }
+
+  .lead-statement {
+    font-family: var(--serif);
+    font-size: clamp(22px, 2.8vw, 30px);
+    line-height: 1.36;
+    color: var(--ink);
+    max-width: 38ch;
+    margin: 28px 0 0;
+    text-wrap: pretty;
+  }
+
+  .lead-body p {
+    font-family: var(--serif);
+    font-size: 17px;
+    line-height: 1.62;
+    color: var(--ink-2);
+    max-width: 64ch;
+    margin: 18px 0 0;
+  }
+
+  .themes {
+    margin-top: 64px;
+    border-top: 2px solid var(--ink);
+  }
+
+  .theme {
+    display: grid;
+    grid-template-columns: 230px minmax(0, 1fr);
+    gap: 0 32px;
+    padding: 30px 0;
+    border-bottom: 1px solid var(--rule);
+    align-items: start;
+  }
+
+  .theme h3 {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 600;
+    letter-spacing: -.014em;
+    line-height: 1.28;
+  }
+
+  .theme h3 small {
+    display: block;
+    margin-top: 6px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
+  .goals { list-style: none; margin: 0; padding: 0; }
+
+  .goals li {
+    padding: 13px 0;
+    border-top: 1px solid var(--rule);
+    font-size: 16px;
+    line-height: 1.55;
+    max-width: 66ch;
+  }
+
+  .goals li:first-child { border-top: 0; padding-top: 0; }
+  .goals li:last-child { padding-bottom: 0; }
+
+  .weight {
+    display: block;
+    margin-top: 5px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--magenta-ink);
+  }
+
+  .top4 {
+    list-style: none;
+    margin: 34px 0 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px 32px;
+  }
+
+  .top4 li { border-top: 2px solid var(--magenta); padding-top: 14px; }
+
+  .top4 .n {
+    display: block;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -.03em;
+    color: var(--magenta);
+    margin-bottom: 14px;
+  }
+
+  .top4 p {
+    margin: 0;
+    font-size: 17px;
+    font-weight: 600;
+    line-height: 1.36;
+    letter-spacing: -.01em;
+  }
+
+  .top4 small {
+    display: block;
+    margin-top: 8px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--ink-3);
+  }
+
   @media (max-width: 820px) {
     .matrix-frame { grid-template-columns: minmax(0, 1fr); }
     .axis-top, .axis-side { display: none; }
@@ -432,12 +595,17 @@
     .pair { grid-template-columns: minmax(0, 1fr); gap: 12px; }
     .pair-key small { display: inline; margin-left: 8px; }
     header.masthead { padding-top: 44px; }
+    header.site { padding-top: 44px; }
+    .theme { grid-template-columns: minmax(0, 1fr); gap: 14px; }
   }
 
   @media print {
     body { background: #fff; color: #000; }
     .cell, .richting { break-inside: avoid; }
     .section-head { margin-top: 40px; }
+    .tabs { display: none; }
+    .panel[hidden] { display: block !important; }
+    .panel + .panel { break-before: page; }
   }
 </style>
 </head>
@@ -445,16 +613,28 @@
 
 <div class="wrap">
 
-  <header class="masthead">
-    <p class="eyebrow">Nulmeting · BKE/SKE-dossier</p>
-    <h1>SWOT als docent</h1>
-    <p class="standfirst">Nulmeting voorafgaand aan het BDB-traject. Opgebouwd uit de eigen onderwijs- en coachingspraktijk en uit een vooruitblikkende brief aan zichzelf, geschreven alsof de BDB al negen maanden achter de rug is. Sterktes en zwaktes gaan over het eigen handelen, kansen en bedreigingen over de omgeving waarin dat handelen plaatsvindt.</p>
+  <header class="site">
+    <p class="eyebrow">BDB-traject · HAN</p>
+    <h1>BDB Fabian Dossier</h1>
     <div class="meta-strip">
       <div><strong>Docent</strong><span>Fabian</span></div>
       <div><strong>Context</strong><span>HAN, Minor CE en Green Office</span></div>
       <div><strong>Stand</strong><span>Voor start BDB, BKE afgerond</span></div>
       <div><strong>Datum</strong><span>september 2026</span></div>
     </div>
+  </header>
+
+  <div class="tabs" role="tablist" aria-label="Onderdelen van het dossier">
+    <button type="button" role="tab" id="tab-swot" aria-controls="panel-swot" aria-selected="true" data-hash="swot">SWOT</button>
+    <button type="button" role="tab" id="tab-leerdoelen" aria-controls="panel-leerdoelen" aria-selected="false" tabindex="-1" data-hash="leerdoelen">Leerdoelen</button>
+  </div>
+
+  <section class="panel" id="panel-swot" role="tabpanel" aria-labelledby="tab-swot">
+
+  <header class="masthead">
+    <p class="eyebrow">Nulmeting · BKE/SKE-dossier</p>
+    <h2 class="panel-title">SWOT als docent</h2>
+    <p class="standfirst">Nulmeting voorafgaand aan het BDB-traject. Opgebouwd uit de eigen onderwijs- en coachingspraktijk en uit een vooruitblikkende brief aan zichzelf, geschreven alsof de BDB al negen maanden achter de rug is. Sterktes en zwaktes gaan over het eigen handelen, kansen en bedreigingen over de omgeving waarin dat handelen plaatsvindt.</p>
   </header>
 
 
@@ -710,7 +890,128 @@
     Samengesteld voorafgaand aan het BDB-traject, op basis van de eigen onderwijs- en coachingspraktijk en een vooruitblikkende brief aan zichzelf waarin de gewenste ontwikkeling is beschreven alsof die al had plaatsgevonden.
   </footer>
 
+  </section>
+
+  <section class="panel" id="panel-leerdoelen" role="tabpanel" aria-labelledby="tab-leerdoelen" hidden>
+
+  <header class="masthead">
+    <p class="eyebrow">Leerdoelen · BDB-traject</p>
+    <h2 class="panel-title">Leerdoelen BDB</h2>
+    <p class="standfirst">Afgeleid uit de <a href="#swot">SWOT als docent</a>, verdeeld over de thema's van het BDB-traject van de HAN: doceren, begeleiden van studenten, ontwerpen van onderwijs, toetsen en professioneel docentschap. Toetsen blijft hier buiten beschouwing, dat is met de BKE al afgerond.</p>
+  </header>
+
+  <div class="section-head first">
+    <h2>Hoofdleerdoel</h2>
+  </div>
+
+  <p class="lead-statement">Ik wil vertrouwen vinden in wat in mijn onderwijs al werkt, en daarnaast mijn palet aan werkvormen en manieren van begeleiden uitbreiden en kunnen onderbouwen.</p>
+
+  <div class="lead-body">
+    <p>Veel van mijn keuzes maak ik nu op ervaring en gevoel, en meestal pakken ze goed uit. Wat eraan ontbreekt is niet de kwaliteit maar het kunnen navertellen: waarom ik dit deed, wat ik ermee wilde bereiken, en wanneer ik iets anders zou kiezen. Dat wil ik kunnen, zodat ik keuzes bewust maak in plaats van dat ze me overkomen, en zodat ik ze kan verantwoorden en doorgeven aan anderen.</p>
+    <p>De leerdoelen hieronder zijn de plekken waar dat concreet wordt: waar ik iets toevoeg aan mijn repertoire, en waar ik expliciet maak wat ik nu nog aanvoel.</p>
+  </div>
+
+  <div class="themes">
+
+    <div class="theme">
+      <h3>Ontwerpen van onderwijs<small>2 leerdoelen</small></h3>
+      <ul class="goals">
+        <li>Ik kan een werkvormkeuze onderbouwen vanuit een didactisch kader, zodat ik kan uitleggen waarom een werkvorm bij dit leerdoel past en wanneer hij dat niet doet.<span class="weight">Weegt zwaar · 2</span></li>
+        <li>Ik kan de mate van zelfsturing in een opdracht als expliciete ontwerpkeuze maken, in plaats van hem te laten volgen uit het projectformaat.</li>
+      </ul>
+    </div>
+
+    <div class="theme">
+      <h3>Doceren<small>3 leerdoelen</small></h3>
+      <ul class="goals">
+        <li>Ik kan mijn werkvormrepertoire buiten de vaardigheidstrainingen uitbreiden, zodat de betrokkenheid in een les niet alleen op mijn eigen optreden rust.</li>
+        <li>Ik kan verschillen in beginniveau binnen een groep in kaart brengen en die verwerken in de opzet van een bijeenkomst.</li>
+        <li>Ik kan me tijdens een bijeenkomst richten op wat de hele groep denkt en voelt, in plaats van mijn aanpak en mijn beeld van hoe het ging te laten bepalen door de studenten die zich het duidelijkst laten horen.</li>
+      </ul>
+    </div>
+
+    <div class="theme">
+      <h3>Begeleiden van studenten<small>2 leerdoelen</small></h3>
+      <ul class="goals">
+        <li>Ik kan onderbouwen wanneer ik wel en niet uitleg geef, en die keuze koppelen aan wat de student daarna zelf doet.<span class="weight">Weegt zwaar · 1</span></li>
+        <li>Ik kan een didactisch kader voor coachen benoemen en toepassen, zodat mijn begeleiding niet alleen op ervaring en aanvoelen rust.</li>
+      </ul>
+    </div>
+
+    <div class="theme">
+      <h3>Professioneel docentschap<small>3 leerdoelen</small></h3>
+      <ul class="goals">
+        <li>Ik kan feedback zichtbaar verwerken, door op het moment zelf terug te geven wat ik ermee ga doen en wat niet.<span class="weight">Weegt zwaar · 3</span></li>
+        <li>Ik kan mijn eigen lessen structureel evalueren binnen de tijd die er is, zodat er iets vastligt in plaats van dat het bij intern nadenken blijft.</li>
+        <li>Ik kan beargumenteerd kiezen wat ik niet vernieuw.<span class="weight">Weegt zwaar · 4</span></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="section-head">
+    <h2>De vier met het meeste gewicht</h2>
+  </div>
+
+  <ol class="top4" role="list">
+    <li><span class="n" aria-hidden="true">1</span><p>Onderbouwen wanneer ik wel en niet uitleg geef.</p><small>Begeleiden van studenten</small></li>
+    <li><span class="n" aria-hidden="true">2</span><p>Een werkvormkeuze onderbouwen vanuit een didactisch kader.</p><small>Ontwerpen van onderwijs</small></li>
+    <li><span class="n" aria-hidden="true">3</span><p>Feedback zichtbaar terugkoppelen op het moment zelf.</p><small>Professioneel docentschap</small></li>
+    <li><span class="n" aria-hidden="true">4</span><p>Beargumenteerd kiezen wat ik niet vernieuw.</p><small>Professioneel docentschap</small></li>
+  </ol>
+
+  </section>
+
 </div>
+
+<script>
+(function () {
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('[role="tab"]'));
+
+  function show(hash, focus) {
+    var target = tabs.filter(function (t) { return t.dataset.hash === hash; })[0] || tabs[0];
+    tabs.forEach(function (t) {
+      var on = t === target;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+    if (focus) target.focus();
+  }
+
+  function fromUrl() { show(location.hash.slice(1)); }
+
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () {
+      if (t.getAttribute('aria-selected') === 'true') return;
+      show(t.dataset.hash);
+      history.pushState(null, '', '#' + t.dataset.hash);
+    });
+    t.addEventListener('keydown', function (e) {
+      var step = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
+      if (!step) return;
+      e.preventDefault();
+      var next = tabs[(i + step + tabs.length) % tabs.length];
+      show(next.dataset.hash, true);
+      history.replaceState(null, '', '#' + next.dataset.hash);
+    });
+  });
+
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest('a[href^="#"]');
+    if (!a) return;
+    var hash = a.getAttribute('href').slice(1);
+    if (!tabs.some(function (t) { return t.dataset.hash === hash; })) return;
+    e.preventDefault();
+    show(hash);
+    history.pushState(null, '', '#' + hash);
+    document.querySelector('.tabs').scrollIntoView();
+  });
+
+  window.addEventListener('popstate', fromUrl);
+  fromUrl();
+})();
+</script>
 
 </body>
 </html>
