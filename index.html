@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="BDB-dossier van Fabian: SWOT als docent en leerdoelen voor het BDB-traject.">
+<meta name="description" content="BDB-dossier van Fabian: SWOT als docent, leerdoelen en een brief aan mezelf voor het BDB-traject.">
 <style>
   :root { color-scheme: light dark; }
   html, body { margin: 0; }
@@ -470,6 +470,29 @@
     text-wrap: balance;
   }
 
+  .section-head .eyebrow {
+    font-family: var(--sans);
+    font-size: 11.5px;
+    line-height: 1.5;
+    color: var(--magenta-ink);
+    max-width: none;
+    margin: 0 0 10px;
+  }
+
+  /* ---------- brief ---------- */
+
+  .letter { margin-top: 48px; max-width: 64ch; }
+
+  .letter p {
+    font-family: var(--serif);
+    font-size: clamp(17px, 1.8vw, 19px);
+    line-height: 1.7;
+    color: var(--ink);
+    margin: 0 0 22px;
+  }
+
+  .letter p.salutation { font-style: italic; color: var(--ink-2); margin-bottom: 18px; }
+
   /* ---------- leerdoelen ---------- */
 
   .section-head.first { margin-top: 56px; }
@@ -627,6 +650,7 @@
   <div class="tabs" role="tablist" aria-label="Onderdelen van het dossier">
     <button type="button" role="tab" id="tab-swot" aria-controls="panel-swot" aria-selected="true" data-hash="swot">SWOT</button>
     <button type="button" role="tab" id="tab-leerdoelen" aria-controls="panel-leerdoelen" aria-selected="false" tabindex="-1" data-hash="leerdoelen">Leerdoelen</button>
+    <button type="button" role="tab" id="tab-brief" aria-controls="panel-brief" aria-selected="false" tabindex="-1" data-hash="brief">Brief aan mezelf</button>
   </div>
 
   <section class="panel" id="panel-swot" role="tabpanel" aria-labelledby="tab-swot">
@@ -634,7 +658,7 @@
   <header class="masthead">
     <p class="eyebrow">Nulmeting · BKE/SKE-dossier</p>
     <h2 class="panel-title">SWOT als docent</h2>
-    <p class="standfirst">Nulmeting voorafgaand aan het BDB-traject. Opgebouwd uit de eigen onderwijs- en coachingspraktijk en uit een vooruitblikkende brief aan zichzelf, geschreven alsof de BDB al negen maanden achter de rug is. Sterktes en zwaktes gaan over het eigen handelen, kansen en bedreigingen over de omgeving waarin dat handelen plaatsvindt.</p>
+    <p class="standfirst">Nulmeting voorafgaand aan het BDB-traject. Opgebouwd uit de eigen onderwijs- en coachingspraktijk en uit een <a href="#brief">vooruitblikkende brief aan zichzelf</a>, geschreven alsof de BDB al negen maanden achter de rug is. Sterktes en zwaktes gaan over het eigen handelen, kansen en bedreigingen over de omgeving waarin dat handelen plaatsvindt.</p>
   </header>
 
 
@@ -810,6 +834,7 @@
   </div>
 
   <div class="section-head">
+    <p class="eyebrow">Analyse door Claude</p>
     <h2>Confrontatie</h2>
     <p>Waar kwadranten elkaar raken staat de eigenlijke ontwikkelvraag. Deze vijf combinaties verklaren meer dan de losse punten, omdat een sterkte en een zwakte hier vaak hetzelfde mechanisme blijken te zijn.</p>
   </div>
@@ -859,6 +884,7 @@
   </div>
 
   <div class="section-head">
+    <p class="eyebrow">Analyse door Claude · uit de confrontatie</p>
     <h2>Ontwikkelrichtingen</h2>
     <p>Vier richtingen die volgen uit de confrontatie. Elk is zo geformuleerd dat er tijdens het BDB-traject iets waarneembaars van te maken valt, want een ontwikkelpunt zonder handeling blijft een voornemen.</p>
   </div>
@@ -959,6 +985,24 @@
     <li><span class="n" aria-hidden="true">3</span><p>Feedback zichtbaar terugkoppelen op het moment zelf.</p><small>Professioneel docentschap</small></li>
     <li><span class="n" aria-hidden="true">4</span><p>Beargumenteerd kiezen wat ik niet vernieuw.</p><small>Professioneel docentschap</small></li>
   </ol>
+
+  </section>
+
+  <section class="panel" id="panel-brief" role="tabpanel" aria-labelledby="tab-brief" hidden>
+
+  <header class="masthead">
+    <p class="eyebrow">Vooruitblik · BDB-traject</p>
+    <h2 class="panel-title">Brief aan mezelf</h2>
+    <p class="standfirst">Geschreven voor de start van de BDB, alsof het traject al negen maanden achter de rug is. De brief is een van de bronnen voor de <a href="#swot">SWOT</a> en de <a href="#leerdoelen">leerdoelen</a>.</p>
+  </header>
+
+  <div class="letter">
+    <p class="salutation">Dag Fabian,</p>
+    <p>Ik ben er blij mee om meer geleerd te hebben over nieuwe werkvormen en activerende werkvormen. Waar voorheen mijn kracht vooral lag op basic werkvormen die op het moment verzonnen zijn én op inspirerende sessies, weet ik nu ook werkvormen slim toe te passen, die ook nog didactisch goed onderbouwd zijn. Ook weet ik naast het meenemen van wat ik zelf heb gelezen en ervaren, ook middelen mee te nemen wanneer toepasbaar (bronnen e.d.). Ik probeer verder nu beter open te staan voor feedback, met de realisatie dat ik een sterke eigen visie heb, er wel voor open sta, maar feedback verwerking bij mij vaak indirect gaat (internaliseren en erna vanzelf meenemen). Ik leer sterk door voorbeelden en het zien van dingen die werken of niet werken, boven alleen theoretisch. Ik weet theorie goed te vertalen naar praktijk, zonder direct alleen weerstand te voelen bij theorie (waar ik voorheen meer vertrouwde op eigen oordeel en empirie dan theorie en daardoor die wel eens weg kon duwen).</p>
+    <p>Het ontwerpen van onderwijs ben ik verder in gegroeid, hier ben ik blij mee. Hier had ik al de nodige ervaring mee en het voelde wel alsof het goed ging. Tegelijkertijd met alle experimentele vormen van onderwijs die ik ontwikkel is het heel fijn om nu een sterker referentiekader te hebben, met onderbouwing waar ik altijd op terug kan vallen óf juist naast me neer kan leggen, maar dan beargumenteerd. Constructive Allignment blijft een term die me altijd vreemd blijft. Dit omdat de basis zo logisch is dat ik de moeilijk gemaakte term niet begrijp. BKE had ik natuurlijk al afgerond dus dit is al prima in orde.</p>
+    <p>Blijven evalueren rondom blended onderwijs is interessant, wat ik al vond gelukkig. Tegelijkertijd gezien het bezig zijn met AI ook in didactiek heb ik hier in het kader van de BDB verder mee geëxperimenteerd en ook AI te kunnen toevoegen aan een vorm van blended leren (naast e learnings e.d.) en hierover iets gemaakt/gepubliceerd.</p>
+    <p>Het inschatten van de studenten “het behalen van de aanvangswaarde” was al een belangrijk goed voor mij. Tegelijkertijd heb ik hier wel kunnen leren om ook de beginsituatie op kennisniveau beter mee om te kunnen gaan. Ik was hier wel bewust van en mee bezig, maar kon hier wel in generaliseren. Ik hoef niet langer altijd diegene te zijn die alles anders of ‘beter’ moet doen. Verder heb ik vertrouwen kunnen vinden in wat al goed gaat en kunnen leren in waar ik nog onzeker over ben. Het één op één begeleiden of in groepen didactisch coachen heb ik meer handvatten voor gekregen. Ik weet beter wanneer mezelf in te houden om iets uit te leggen en wanneer uitleg wel toepasbaar is. Ik weet beter in het algemeen een didactische houding aan te nemen, boven alleen mensen écht iets bijbrengen zoals voorheen. Zelfsturend leren gaat bij mij nu bewuster, in plaats van de situatie enkel het zelfsturend leren te laten bepalen (opdrachten/projecten).</p>
+  </div>
 
   </section>
 
