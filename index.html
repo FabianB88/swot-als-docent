@@ -478,13 +478,19 @@
 
   /* ---------- verwerkingen per les ---------- */
 
-  .les {
+  .panel { scroll-margin-top: 60px; }
+
+  .les-list { list-style: none; margin: 8px 0 0; padding: 0; }
+
+  .les-link {
     display: grid;
-    grid-template-columns: 130px minmax(0, 1fr);
+    grid-template-columns: 130px minmax(0, 1fr) auto;
     gap: 0 32px;
-    padding: 40px 0 44px;
+    align-items: center;
+    padding: 28px 0;
     border-bottom: 1px solid var(--rule);
-    align-items: start;
+    color: inherit;
+    text-decoration: none;
   }
 
   .les-num {
@@ -504,19 +510,18 @@
     color: var(--magenta);
   }
 
-  .les-head h3 {
-    margin: 0;
-    font-size: clamp(22px, 2.6vw, 28px);
-    font-weight: 700;
-    letter-spacing: -.02em;
-    line-height: 1.2;
+  .les-link-title {
+    display: block;
+    font-size: clamp(19px, 2.2vw, 23px);
+    font-weight: 600;
+    letter-spacing: -.015em;
+    line-height: 1.25;
     text-wrap: balance;
-    max-width: 30ch;
   }
 
-  .les-head .doc {
+  .les-doc {
     display: block;
-    margin-top: 10px;
+    margin-top: 8px;
     font-size: 11px;
     font-weight: 600;
     letter-spacing: .14em;
@@ -524,16 +529,71 @@
     color: var(--ink-3);
   }
 
-  .les-head .intro {
+  .les-open {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 11px 18px;
+    background: var(--ink);
+    color: var(--paper);
+    border-radius: 2px;
+    font-size: 14.5px;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .les-open svg { width: 18px; height: 18px; transition: transform .15s; }
+  .les-link:hover .les-link-title { color: var(--magenta-ink); }
+  .les-link:hover .les-open { background: var(--magenta-ink); }
+  .les-link:hover .les-open svg { transform: translateX(3px); }
+
+  .les-detail { padding-top: 36px; }
+
+  .les-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--ink-2);
+    text-decoration: none;
+  }
+
+  .les-back:hover { color: var(--magenta-ink); }
+  .les-back svg { width: 18px; height: 18px; }
+
+  .les-detail-head {
+    display: grid;
+    grid-template-columns: 130px minmax(0, 1fr);
+    gap: 0 32px;
+    margin-top: 28px;
+    padding-bottom: 30px;
+    border-bottom: 2px solid var(--ink);
+  }
+
+  .les-detail-head h3 {
+    margin: 0;
+    font-size: clamp(28px, 3.6vw, 40px);
+    font-weight: 700;
+    letter-spacing: -.022em;
+    line-height: 1.12;
+    text-wrap: balance;
+    max-width: 26ch;
+    outline: none;
+  }
+
+  .les-detail-head .les-doc { margin-top: 14px; }
+
+  .les-detail-head .intro {
     font-family: var(--serif);
     font-size: 17px;
     line-height: 1.6;
     color: var(--ink-2);
     max-width: 64ch;
-    margin: 16px 0 0;
+    margin: 14px 0 0;
   }
 
-  .les-body { max-width: 68ch; }
+  .les-detail-body { margin-left: 162px; max-width: 68ch; }
 
   .les-section h4 {
     margin: 40px 0 10px;
@@ -576,35 +636,15 @@
   .les-actions {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
-    gap: 12px 22px;
-    margin-top: 28px;
+    gap: 12px 24px;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--rule);
   }
 
-  .les details { margin-top: 8px; }
-
-  .les summary {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    padding: 11px 18px;
-    border: 1px solid var(--ink);
-    border-radius: 2px;
-    font-size: 14.5px;
-    font-weight: 600;
-    cursor: pointer;
-    list-style: none;
-  }
-
-  .les summary::-webkit-details-marker { display: none; }
-  .les summary:hover { color: var(--magenta-ink); border-color: var(--magenta-ink); }
-  .les summary svg { width: 18px; height: 18px; transition: transform .15s; }
-  .les details[open] summary svg { transform: rotate(180deg); }
-  .les summary .when-open { display: none; }
-  .les details[open] summary .when-open { display: inline; }
-  .les details[open] summary .when-closed { display: none; }
-
-  .les .doc-link {
+  .doc-link {
     display: inline-flex;
     align-items: center;
     gap: 7px;
@@ -612,7 +652,7 @@
     color: var(--ink-2);
   }
 
-  .les .doc-link svg { width: 16px; height: 16px; }
+  .doc-link svg { width: 16px; height: 16px; }
 
   /* ---------- bestanden ---------- */
 
@@ -822,8 +862,11 @@
     header.site { padding-top: 44px; }
     .theme { grid-template-columns: minmax(0, 1fr); gap: 14px; }
     .file { grid-template-columns: minmax(0, 1fr); }
-    .les { grid-template-columns: minmax(0, 1fr); gap: 14px; }
+    .les-link { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+    .les-link .les-open { justify-self: start; }
     .les-num b { display: inline; margin: 0 0 0 8px; font-size: 28px; }
+    .les-detail-head { grid-template-columns: minmax(0, 1fr); gap: 12px; }
+    .les-detail-body { margin-left: 0; }
   }
 
   @media print {
@@ -833,6 +876,8 @@
     .tabs { display: none; }
     .panel[hidden] { display: block !important; }
     .panel + .panel { break-before: page; }
+    .les-detail[hidden] { display: block !important; }
+    .les-back { display: none; }
   }
 </style>
 </head>
@@ -1212,133 +1257,141 @@
 
   <section class="panel" id="panel-verwerkingen" role="tabpanel" aria-labelledby="tab-verwerkingen" hidden>
 
-  <header class="masthead">
-    <p class="eyebrow">Verwerkingen · BDB-traject</p>
-    <h2 class="panel-title">Verwerkingen per les</h2>
-    <p class="standfirst">Per les een verwerking van de stof, gekoppeld aan de eigen onderwijspraktijk.</p>
-  </header>
+  <div class="les-overview">
+    <header class="masthead">
+      <p class="eyebrow">Verwerkingen · BDB-traject</p>
+      <h2 class="panel-title">Verwerkingen per les</h2>
+      <p class="standfirst">Per les een verwerking van de stof, gekoppeld aan de eigen onderwijspraktijk. Kies een les om de verwerking te lezen.</p>
+    </header>
 
-  <article class="les" id="les-2">
-    <div class="les-num">Les<b>2</b></div>
-    <div>
-      <div class="les-head">
-        <h3>Inzicht in cognitivisme, gerelateerd aan de eigen onderwijspraktijk</h3>
-        <span class="doc">Didactische visie · Mijn positie in het cognitivisme</span>
+    <ul class="les-list">
+      <li>
+        <a class="les-link" href="#verwerkingen/les-2">
+          <span class="les-num">Les<b>2</b></span>
+          <span class="les-link-text">
+            <span class="les-link-title">Inzicht in cognitivisme, gerelateerd aan de eigen onderwijspraktijk</span>
+            <span class="les-doc">Didactische visie · Mijn positie in het cognitivisme</span>
+          </span>
+          <span class="les-open">Lezen <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></span>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <article class="les-detail" id="les-2" hidden>
+    <a class="les-back" href="#verwerkingen"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg> Alle lessen</a>
+
+    <header class="les-detail-head">
+      <div class="les-num">Les<b>2</b></div>
+      <div>
+        <h3 tabindex="-1">Inzicht in cognitivisme, gerelateerd aan de eigen onderwijspraktijk</h3>
+        <span class="les-doc">Didactische visie · Mijn positie in het cognitivisme</span>
         <p class="intro">Reflectie op de leertheorieën uit Berg, Van Bemmel en Van Ast (2022), Een meester in leren, hoofdstuk 1 tot en met 3, in relatie tot mijn eigen lespraktijk. Geschreven voor mezelf, om scherp te krijgen waar ik sta.</p>
       </div>
+    </header>
 
-      <div class="les-body">
-        <section class="les-section">
-          <h4>1. Kern in één alinea</h4>
-          <p>Ik werk in de praktijk grotendeels cognitivistisch, en meer in de lijn van Ausubel dan van Bruner. Mijn lessen bestaan uit twee fasen. Eerst bouw ik een beeld op: ik activeer het referentiekader van studenten, beperk de hoeveelheid informatie, koppel nieuwe stof aan wat er al zit en leg naast het wat altijd het waarom uit. Pas daarna komt het ontdekken, en dan niet van de kennis zelf maar van de toepassing: studenten zoeken zelf waar een principe in hun eigen leven, werk of opdracht al werkt. De keuze tussen instructie en ontdekken is voor mij geen voorkeur maar een beslisregel die per onderdeel anders uitvalt. Motivatie zie ik niet als iets wat ik aantref, maar als iets wat ik in de eerste fase organiseer.</p>
-        </section>
+    <div class="les-detail-body">
+      <section class="les-section">
+        <h4>1. Kern in één alinea</h4>
+        <p>Ik werk in de praktijk grotendeels cognitivistisch, en meer in de lijn van Ausubel dan van Bruner. Mijn lessen bestaan uit twee fasen. Eerst bouw ik een beeld op: ik activeer het referentiekader van studenten, beperk de hoeveelheid informatie, koppel nieuwe stof aan wat er al zit en leg naast het wat altijd het waarom uit. Pas daarna komt het ontdekken, en dan niet van de kennis zelf maar van de toepassing: studenten zoeken zelf waar een principe in hun eigen leven, werk of opdracht al werkt. De keuze tussen instructie en ontdekken is voor mij geen voorkeur maar een beslisregel die per onderdeel anders uitvalt. Motivatie zie ik niet als iets wat ik aantref, maar als iets wat ik in de eerste fase organiseer.</p>
+      </section>
 
-        <details>
-          <summary>
-            <span class="when-closed">Lees de volledige verwerking</span><span class="when-open">Volledige verwerking inklappen</span>
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-          </summary>
+      <section class="les-section">
+        <h4>2. Waar ik uit de theorie in herken</h4>
+        <h5>Beeldvorming en betekenisvol leren (Ausubel)</h5>
+        <p>Het grootste deel van wat ik doe valt onder Ausubels actief ontvangend leren en betekenisvol leren. Ik bied de stof gestructureerd aan, maar zo dat studenten er actief mee moeten werken. Van zijn vijf voorwaarden gebruik ik ze alle vijf, en twee ervan zijn kenmerkend voor mijn stijl: het cognitief conflict (ik werp iets op waar studenten over na moeten denken omdat het niet past in hun huidige beeld) en het laten geven van voorbeelden door de studenten zelf. De ankerbegrippen en advance organizers zijn de reden dat ik met weinig informatie werk: nieuwe kennis krijgt alleen een plek als er iets is om het aan te hangen, en te veel informatie tegelijk maakt dat onmogelijk. Chunking op het bestaande referentiekader is voor mij de basisoperatie van lesgeven.</p>
+        <h5>Een denkkader bouwen (Bruner en Ausubel)</h5>
+        <p>Beeld creëren betekent bij mij niet werken met plaatjes. Het beeld dat ik bouw is een beeld van denken: een logica, een denkkader waarmee studenten zelf conclusies kunnen trekken. Ik werk vrijwel uitsluitend met bord en stift, in gesprek met de groep, en de structuur ontstaat ter plekke terwijl we redeneren. In Bruners termen is dat vooral de symbolische representatievorm (taal en begrippen), met het bord als tijdelijke iconische ondersteuning van de redenering, niet als doel op zich. In Ausubels termen is het denkkader zelf de advance organizer: geen kant-en-klaar schema, maar een ordening die we samen opbouwen en waar de nieuwe stof zich in laat opnemen. Het waarom erbij uitleggen is wat dat kader stabiel maakt in plaats van los feitenmateriaal. De rol die daarbij hoort is die van leermeester: ik doe het denken voor, hardop en interactief, zodat studenten de manier van redeneren overnemen en daarna zelf verder kunnen. Dat is modelleren in de zin van hoofdstuk 1 (denkstappen benoemen), toegepast op een denkwijze in plaats van op een vaardigheid.</p>
+        <h5>Begeleid ontdekken en het spiral curriculum (Bruner)</h5>
+        <p>Ik onderschrijf Bruners claim dat zelf ontdekte kennis beter beklijft en beter transfereert. Maar ik pas het toe op een ander niveau dan hij. Het principe geef ik; de verbinding met hun eigen situatie maken studenten zelf. Het retentievoordeel komt dan uit het zelf genereren van de koppeling, niet uit het zoeken naar het principe, en zonder het risico dat studenten het principe verkeerd reconstrueren. Dat is begeleid zelfontdekkend leren in de strikte zin, en het spiral curriculum is het model waarmee ik dezelfde principes op steeds hoger niveau laat terugkomen.</p>
+        <h5>Aanleren is iets anders dan directe instructie</h5>
+        <p>Ik geloof in duidelijkheid als voorwaarde om tot hogere cognitieve beslissings- en uitwerkingspaden te komen. Zelf laten exploreren van de basis is in mijn ervaring verspilling: studenten blijven hangen in het zoeken naar wat in korte tijd helder te maken is, en komen niet toe aan het deel waar ontdekken wel loont. Daarin sta ik aan de kant van Kirschner, Sweller en Clark (2006): wie nog geen schema heeft, is niet geholpen met minimale begeleiding.</p>
+        <p>Maar wat ik doe is geen directe instructie in de zin van een stappenplan of een kant-en-klare procedure. Ik leer methodes en conceptuele kernen aan: de basisprincipes van een domein, de elementen waar het echt om draait. Bij leiderschap zijn dat bijvoorbeeld de basisprincipes van waar mensen naar op zoek zijn en wat er gebeurt als ze dat niet vinden. Dat aanleren gebeurt door uit te leggen, er interactief over in gesprek te gaan en het referentiekader van studenten aan te wakkeren, zodat het daar in te fietsen is. Het resultaat is geen recept maar een denkkader. Wat de student daarna zelf moet ontdekken is hoe dit te vertalen naar het eigen referentiekader, wat ervan wel en niet mee te nemen, en hoe het toe te passen, met een eigen trial-and-errorfase. Dat onderscheid tussen aanleren en instrueren is voor mij wezenlijk: instructie levert een handeling op, aanleren levert een manier van denken op waarmee de student zelf handelingen kan bedenken.</p>
+        <p>Studenten waarderen dit ook. Duidelijkheid en echt iets leren bevalt ze, en het is de basis van waaruit ze naar een hoger niveau kunnen. Wat ik precies toepas hangt sterk af van het type taak. Bij vaardigheden die duidelijk zijn, geef ik duidelijkheid: ik leer de methode aan, en daarna volgt een groot deel zelfontdekking in het toepassen. Bij de kern van een domein gaat het om denkkadervorming, en die vind ik minstens zo belangrijk. Bij AI-werk gaat het om challenges met een minimum aan uitleg vooraf.</p>
+      </section>
 
-        <section class="les-section">
-          <h4>2. Waar ik uit de theorie in herken</h4>
-          <h5>Beeldvorming en betekenisvol leren (Ausubel)</h5>
-          <p>Het grootste deel van wat ik doe valt onder Ausubels actief ontvangend leren en betekenisvol leren. Ik bied de stof gestructureerd aan, maar zo dat studenten er actief mee moeten werken. Van zijn vijf voorwaarden gebruik ik ze alle vijf, en twee ervan zijn kenmerkend voor mijn stijl: het cognitief conflict (ik werp iets op waar studenten over na moeten denken omdat het niet past in hun huidige beeld) en het laten geven van voorbeelden door de studenten zelf. De ankerbegrippen en advance organizers zijn de reden dat ik met weinig informatie werk: nieuwe kennis krijgt alleen een plek als er iets is om het aan te hangen, en te veel informatie tegelijk maakt dat onmogelijk. Chunking op het bestaande referentiekader is voor mij de basisoperatie van lesgeven.</p>
-          <h5>Een denkkader bouwen (Bruner en Ausubel)</h5>
-          <p>Beeld creëren betekent bij mij niet werken met plaatjes. Het beeld dat ik bouw is een beeld van denken: een logica, een denkkader waarmee studenten zelf conclusies kunnen trekken. Ik werk vrijwel uitsluitend met bord en stift, in gesprek met de groep, en de structuur ontstaat ter plekke terwijl we redeneren. In Bruners termen is dat vooral de symbolische representatievorm (taal en begrippen), met het bord als tijdelijke iconische ondersteuning van de redenering, niet als doel op zich. In Ausubels termen is het denkkader zelf de advance organizer: geen kant-en-klaar schema, maar een ordening die we samen opbouwen en waar de nieuwe stof zich in laat opnemen. Het waarom erbij uitleggen is wat dat kader stabiel maakt in plaats van los feitenmateriaal. De rol die daarbij hoort is die van leermeester: ik doe het denken voor, hardop en interactief, zodat studenten de manier van redeneren overnemen en daarna zelf verder kunnen. Dat is modelleren in de zin van hoofdstuk 1 (denkstappen benoemen), toegepast op een denkwijze in plaats van op een vaardigheid.</p>
-          <h5>Begeleid ontdekken en het spiral curriculum (Bruner)</h5>
-          <p>Ik onderschrijf Bruners claim dat zelf ontdekte kennis beter beklijft en beter transfereert. Maar ik pas het toe op een ander niveau dan hij. Het principe geef ik; de verbinding met hun eigen situatie maken studenten zelf. Het retentievoordeel komt dan uit het zelf genereren van de koppeling, niet uit het zoeken naar het principe, en zonder het risico dat studenten het principe verkeerd reconstrueren. Dat is begeleid zelfontdekkend leren in de strikte zin, en het spiral curriculum is het model waarmee ik dezelfde principes op steeds hoger niveau laat terugkomen.</p>
-          <h5>Aanleren is iets anders dan directe instructie</h5>
-          <p>Ik geloof in duidelijkheid als voorwaarde om tot hogere cognitieve beslissings- en uitwerkingspaden te komen. Zelf laten exploreren van de basis is in mijn ervaring verspilling: studenten blijven hangen in het zoeken naar wat in korte tijd helder te maken is, en komen niet toe aan het deel waar ontdekken wel loont. Daarin sta ik aan de kant van Kirschner, Sweller en Clark (2006): wie nog geen schema heeft, is niet geholpen met minimale begeleiding.</p>
-          <p>Maar wat ik doe is geen directe instructie in de zin van een stappenplan of een kant-en-klare procedure. Ik leer methodes en conceptuele kernen aan: de basisprincipes van een domein, de elementen waar het echt om draait. Bij leiderschap zijn dat bijvoorbeeld de basisprincipes van waar mensen naar op zoek zijn en wat er gebeurt als ze dat niet vinden. Dat aanleren gebeurt door uit te leggen, er interactief over in gesprek te gaan en het referentiekader van studenten aan te wakkeren, zodat het daar in te fietsen is. Het resultaat is geen recept maar een denkkader. Wat de student daarna zelf moet ontdekken is hoe dit te vertalen naar het eigen referentiekader, wat ervan wel en niet mee te nemen, en hoe het toe te passen, met een eigen trial-and-errorfase. Dat onderscheid tussen aanleren en instrueren is voor mij wezenlijk: instructie levert een handeling op, aanleren levert een manier van denken op waarmee de student zelf handelingen kan bedenken.</p>
-          <p>Studenten waarderen dit ook. Duidelijkheid en echt iets leren bevalt ze, en het is de basis van waaruit ze naar een hoger niveau kunnen. Wat ik precies toepas hangt sterk af van het type taak. Bij vaardigheden die duidelijk zijn, geef ik duidelijkheid: ik leer de methode aan, en daarna volgt een groot deel zelfontdekking in het toepassen. Bij de kern van een domein gaat het om denkkadervorming, en die vind ik minstens zo belangrijk. Bij AI-werk gaat het om challenges met een minimum aan uitleg vooraf.</p>
-        </section>
+      <section class="les-section">
+        <h4>3. Het tweefasenmodel</h4>
+        <p>Mijn lessen hebben een vaste opbouw die ik als volgt kan samenvatten.</p>
+        <p><strong>Fase 1, beeldvorming en begrip.</strong> Referentiekader activeren, een beperkt aantal kernprincipes aanreiken, het waarom erachter uitleggen, een cognitief conflict opwerpen, en het geheel interactief aan het bord tot een denkkader ordenen. Doel: een stabiel schema waar de student mee kan werken, en een reden om verder te willen.</p>
+        <p><strong>Fase 2, ontdekken en toepassen.</strong> Studenten zoeken zelf waar de principes in hun eigen wereld al werken, passen ze toe op de echte opdracht en komen tot eigen keuzes en uitwerkingen. Mijn rol verschuift van instructeur naar begeleider. Doel: transfer, retentie en eigenaarschap.</p>
+        <p>De twee fasen zijn geen tegenstelling tussen cognitivisme en ontdekkend leren, maar hetzelfde principe op twee lagen: instructie op het niveau van de principes, ontdekking op het niveau van de betekenis. De begripscheck aan het eind (samenvatten in eigen bewoordingen) is bij deze aanpak geen afronding maar een noodzakelijke stap, omdat studenten bij het aandragen van eigen voorbeelden ook verkeerde voorbeelden aandragen, en een ongecorrigeerd verkeerd voorbeeld verankert een verkeerd schema.</p>
+      </section>
 
-        <section class="les-section">
-          <h4>3. Het tweefasenmodel</h4>
-          <p>Mijn lessen hebben een vaste opbouw die ik als volgt kan samenvatten.</p>
-          <p><strong>Fase 1, beeldvorming en begrip.</strong> Referentiekader activeren, een beperkt aantal kernprincipes aanreiken, het waarom erachter uitleggen, een cognitief conflict opwerpen, en het geheel interactief aan het bord tot een denkkader ordenen. Doel: een stabiel schema waar de student mee kan werken, en een reden om verder te willen.</p>
-          <p><strong>Fase 2, ontdekken en toepassen.</strong> Studenten zoeken zelf waar de principes in hun eigen wereld al werken, passen ze toe op de echte opdracht en komen tot eigen keuzes en uitwerkingen. Mijn rol verschuift van instructeur naar begeleider. Doel: transfer, retentie en eigenaarschap.</p>
-          <p>De twee fasen zijn geen tegenstelling tussen cognitivisme en ontdekkend leren, maar hetzelfde principe op twee lagen: instructie op het niveau van de principes, ontdekking op het niveau van de betekenis. De begripscheck aan het eind (samenvatten in eigen bewoordingen) is bij deze aanpak geen afronding maar een noodzakelijke stap, omdat studenten bij het aandragen van eigen voorbeelden ook verkeerde voorbeelden aandragen, en een ongecorrigeerd verkeerd voorbeeld verankert een verkeerd schema.</p>
-        </section>
+      <section class="les-section">
+        <h4>4. De beslisregel: wanneer instructie, wanneer ontdekken</h4>
+        <p>Mijn AI-onderwijs wijkt af van dit model: daar werk ik met challenges en relatief weinig instructie, omdat zelf ontdekken daar echt het beste werkt. Dat lijkt een inconsequentie, maar het is een toepassing van dezelfde regel. Of ik kies voor instructie of ontdekken hangt af van drie kenmerken van het domein.</p>
+        <p><strong>Heeft de student al een schema?</strong> Kirschners argument geldt voor novieten zonder aanknopingspunt. Bij AI-tools zijn mijn studenten geen novieten: iedereen heeft al een referentiekader (chatten, zoeken, iets laten schrijven). Wat ze missen is de verfijning, en die zit in de zone van naaste ontwikkeling waar challenges werken. Bij circulaire economie of bedrijfskunde is het schema er vaak niet en moet ik het eerst bouwen.</p>
+        <p><strong>Geeft de omgeving directe feedback?</strong> Trial-and-error werkt als de omgeving zelf corrigeert. Bij een AI-tool is de feedback op een prompt onmiddellijk, goedkoop en zichtbaar. Bij vakinhoud blijft een verkeerd schema maanden onopgemerkt. Ontdekkend leren werkt dus beter naarmate de omgeving de correctie levert; anders moet ik die leveren.</p>
+        <p><strong>Hoe lang blijft de basis geldig?</strong> Wat ik over een tool uitleg is over een half jaar deels achterhaald; wat ik over een manier van onderzoeken aanleer niet. Bij AI is de basis de instructie niet waard, bij vakinhoud wel.</p>
+        <p>Ook bij de AI-challenges is er overigens sturing: ik kies de opdracht, het conflict en de volgorde, en ik zet het denkkader neer voordat ze beginnen. De instructie is daar niet verdwenen maar verplaatst van de uitleg naar het ontwerp van de opdracht. Het is nog steeds begeleid ontdekken.</p>
+      </section>
 
-        <section class="les-section">
-          <h4>4. De beslisregel: wanneer instructie, wanneer ontdekken</h4>
-          <p>Mijn AI-onderwijs wijkt af van dit model: daar werk ik met challenges en relatief weinig instructie, omdat zelf ontdekken daar echt het beste werkt. Dat lijkt een inconsequentie, maar het is een toepassing van dezelfde regel. Of ik kies voor instructie of ontdekken hangt af van drie kenmerken van het domein.</p>
-          <p><strong>Heeft de student al een schema?</strong> Kirschners argument geldt voor novieten zonder aanknopingspunt. Bij AI-tools zijn mijn studenten geen novieten: iedereen heeft al een referentiekader (chatten, zoeken, iets laten schrijven). Wat ze missen is de verfijning, en die zit in de zone van naaste ontwikkeling waar challenges werken. Bij circulaire economie of bedrijfskunde is het schema er vaak niet en moet ik het eerst bouwen.</p>
-          <p><strong>Geeft de omgeving directe feedback?</strong> Trial-and-error werkt als de omgeving zelf corrigeert. Bij een AI-tool is de feedback op een prompt onmiddellijk, goedkoop en zichtbaar. Bij vakinhoud blijft een verkeerd schema maanden onopgemerkt. Ontdekkend leren werkt dus beter naarmate de omgeving de correctie levert; anders moet ik die leveren.</p>
-          <p><strong>Hoe lang blijft de basis geldig?</strong> Wat ik over een tool uitleg is over een half jaar deels achterhaald; wat ik over een manier van onderzoeken aanleer niet. Bij AI is de basis de instructie niet waard, bij vakinhoud wel.</p>
-          <p>Ook bij de AI-challenges is er overigens sturing: ik kies de opdracht, het conflict en de volgorde, en ik zet het denkkader neer voordat ze beginnen. De instructie is daar niet verdwenen maar verplaatst van de uitleg naar het ontwerp van de opdracht. Het is nog steeds begeleid ontdekken.</p>
-        </section>
+      <section class="les-section">
+        <h4>5. Motivatie: wat ik niet geloof en wat ik wel doe</h4>
+        <h5>Puur ontdekkend leren veronderstelt motivatie in plaats van haar te creëren</h5>
+        <p>Bruner stelt dat ontdekkend leren intrinsieke motivatie oplevert. Mijn ervaring is dat het intrinsieke motivatie veronderstelt. Beide kunnen waar zijn, maar voor verschillende studenten: wie al nieuwsgierig is wordt nieuwsgieriger, wie dat niet is krijgt een open opdracht en haakt af. Puur ontdekkend leren vergroot zo het verschil tussen gemotiveerde en ongemotiveerde studenten. Het boek levert de argumenten zelf, verspreid over drie plekken: de kritiek in 2.5 dat het model motivatie en zelfvertrouwen negeert, de kritiek in 3.5.2 dat studenten niet weten wat ze niet weten, en Vygotsky’s frustratiezone. Een open opdracht zonder voorbereiding legt de taak in die frustratiezone en maakt motivatie het probleem van de student.</p>
+        <h5>Nieuwsgierigheid is er wel, maar ligt bedolven</h5>
+        <p>Puur nieuwsgierigheid prikkelen zou optimaal zijn in een sociaal en werelds vacuüm. Dat is niet de werkelijkheid. Studenten komen met een baan, een groep, een zelfbeeld en een geschiedenis met school, en bij een deel van hen is de nieuwsgierigheid bedolven onder die lagen. In termen van het SCARF-model zijn dat bedreigingen (status, zekerheid, autonomie) waaronder mensen in zelfbescherming schieten in plaats van te gaan onderzoeken. Nieuwsgierigheid is daarom geen startpunt maar iets wat pas beschikbaar komt als de bedreiging weg is. Daar komt bij dat het moetje van school zelden echte nieuwsgierigheid wekt: het geeft geen erkenning en geen trots, en dus zoeken studenten een sociaal geaccepteerd alternatief.</p>
+        <h5>Extrinsieke motivatie laten internaliseren</h5>
+        <p>Mijn aanpak mikt daarom niet op intrinsieke motivatie in de strikte zin. Sociale beloning (erkenning, erbij horen, een serieuze rol krijgen) is extrinsiek, en dat is geen probleem. De zelfdeterminatietheorie van Deci en Ryan beschrijft een continuüm van externe regulatie via geïntrojecteerde en geïdentificeerde regulatie naar geïntegreerde en uiteindelijk intrinsieke motivatie. Wat ik doe is de sociale omgeving zo inrichten dat studenten via trots en erkenning het doel gaan overnemen als het hunne: internalisatie. Verbondenheid is in die theorie geen concurrent van intrinsieke motivatie maar een voorwaarde voor internalisatie. Het waarom uitleggen is in dit licht de motivationele component van instructie: het geeft de reden die de open opdracht als bekend veronderstelt. Bij AI-onderwijs is dit minder nodig omdat de activiteit zelf belonend genoeg is.</p>
+        <h5>Zelfregulatie, niet motivatie, is het ontwikkelingsprobleem</h5>
+        <p>Uit de ontwikkelingspsychologie is bekend dat de prefrontale cortex, verantwoordelijk voor planning, impulsbeheersing en het vasthouden van doelen op lange termijn, doorrijpt tot in de twintig, terwijl het beloningssysteem in de adolescentie juist extra gevoelig is voor sociale en kortetermijnbeloning (het duale-systeemmodel van Steinberg en Casey). Het boek verwijst hiernaar in 3.5.2 en hoofdstuk 5. Ik formuleer dit bewust niet als “intrinsieke motivatie is moeilijk voor je 24e”: nieuwsgierigheid en interesse zijn in deze levensfase sterk aanwezig. Wat moeilijker is, is die motivatie omzetten in volgehouden, zelfgestuurd gedrag tegen de korte termijn en de sociale omgeving in. Dat is een zelfregulatieprobleem. De conclusie is dan niet dat ontdekkend leren voor hbo-studenten afgeschreven moet worden, maar dat ik de structuur lever die het brein zelf nog niet levert: heldere kaders, korte cycli, zichtbare tussenstappen en een omgeving waarin prestatie de norm is. Dat sluit aan bij Vygotsky’s afnemende sturing en de leerfuncties uit 3.4.4 die de leraar tijdelijk overneemt.</p>
+      </section>
 
-        <section class="les-section">
-          <h4>5. Motivatie: wat ik niet geloof en wat ik wel doe</h4>
-          <h5>Puur ontdekkend leren veronderstelt motivatie in plaats van haar te creëren</h5>
-          <p>Bruner stelt dat ontdekkend leren intrinsieke motivatie oplevert. Mijn ervaring is dat het intrinsieke motivatie veronderstelt. Beide kunnen waar zijn, maar voor verschillende studenten: wie al nieuwsgierig is wordt nieuwsgieriger, wie dat niet is krijgt een open opdracht en haakt af. Puur ontdekkend leren vergroot zo het verschil tussen gemotiveerde en ongemotiveerde studenten. Het boek levert de argumenten zelf, verspreid over drie plekken: de kritiek in 2.5 dat het model motivatie en zelfvertrouwen negeert, de kritiek in 3.5.2 dat studenten niet weten wat ze niet weten, en Vygotsky’s frustratiezone. Een open opdracht zonder voorbereiding legt de taak in die frustratiezone en maakt motivatie het probleem van de student.</p>
-          <h5>Nieuwsgierigheid is er wel, maar ligt bedolven</h5>
-          <p>Puur nieuwsgierigheid prikkelen zou optimaal zijn in een sociaal en werelds vacuüm. Dat is niet de werkelijkheid. Studenten komen met een baan, een groep, een zelfbeeld en een geschiedenis met school, en bij een deel van hen is de nieuwsgierigheid bedolven onder die lagen. In termen van het SCARF-model zijn dat bedreigingen (status, zekerheid, autonomie) waaronder mensen in zelfbescherming schieten in plaats van te gaan onderzoeken. Nieuwsgierigheid is daarom geen startpunt maar iets wat pas beschikbaar komt als de bedreiging weg is. Daar komt bij dat het moetje van school zelden echte nieuwsgierigheid wekt: het geeft geen erkenning en geen trots, en dus zoeken studenten een sociaal geaccepteerd alternatief.</p>
-          <h5>Extrinsieke motivatie laten internaliseren</h5>
-          <p>Mijn aanpak mikt daarom niet op intrinsieke motivatie in de strikte zin. Sociale beloning (erkenning, erbij horen, een serieuze rol krijgen) is extrinsiek, en dat is geen probleem. De zelfdeterminatietheorie van Deci en Ryan beschrijft een continuüm van externe regulatie via geïntrojecteerde en geïdentificeerde regulatie naar geïntegreerde en uiteindelijk intrinsieke motivatie. Wat ik doe is de sociale omgeving zo inrichten dat studenten via trots en erkenning het doel gaan overnemen als het hunne: internalisatie. Verbondenheid is in die theorie geen concurrent van intrinsieke motivatie maar een voorwaarde voor internalisatie. Het waarom uitleggen is in dit licht de motivationele component van instructie: het geeft de reden die de open opdracht als bekend veronderstelt. Bij AI-onderwijs is dit minder nodig omdat de activiteit zelf belonend genoeg is.</p>
-          <h5>Zelfregulatie, niet motivatie, is het ontwikkelingsprobleem</h5>
-          <p>Uit de ontwikkelingspsychologie is bekend dat de prefrontale cortex, verantwoordelijk voor planning, impulsbeheersing en het vasthouden van doelen op lange termijn, doorrijpt tot in de twintig, terwijl het beloningssysteem in de adolescentie juist extra gevoelig is voor sociale en kortetermijnbeloning (het duale-systeemmodel van Steinberg en Casey). Het boek verwijst hiernaar in 3.5.2 en hoofdstuk 5. Ik formuleer dit bewust niet als “intrinsieke motivatie is moeilijk voor je 24e”: nieuwsgierigheid en interesse zijn in deze levensfase sterk aanwezig. Wat moeilijker is, is die motivatie omzetten in volgehouden, zelfgestuurd gedrag tegen de korte termijn en de sociale omgeving in. Dat is een zelfregulatieprobleem. De conclusie is dan niet dat ontdekkend leren voor hbo-studenten afgeschreven moet worden, maar dat ik de structuur lever die het brein zelf nog niet levert: heldere kaders, korte cycli, zichtbare tussenstappen en een omgeving waarin prestatie de norm is. Dat sluit aan bij Vygotsky’s afnemende sturing en de leerfuncties uit 3.4.4 die de leraar tijdelijk overneemt.</p>
-        </section>
+      <section class="les-section">
+        <h4>6. Het leerklimaat: duidelijkheid, veiligheid en narratief</h4>
+        <h5>Duidelijkheid als voorwaarde voor veiligheid</h5>
+        <p>Ik merk dat duidelijkheid in de randvoorwaarden, de situatie en de verwachtingen essentieel is voor veiligheid en daarmee voor motivatie. Studenten moeten weten waar ze aan toe zijn, wat er van hen verwacht wordt en wat er te halen valt. Dat is geen bijzaak naast de inhoud, maar de bodem waarop leren mogelijk wordt. Onduidelijkheid over de kaders roept dezelfde zelfbescherming op als onduidelijkheid over de stof: mensen trekken zich terug in plaats van te gaan onderzoeken. Wat Edmondson (1999) psychologische veiligheid noemt, het vertrouwen dat je een vraag kunt stellen of een fout kunt maken zonder daarop afgerekend te worden, begint bij mij dus bij duidelijkheid, niet bij vriendelijkheid.</p>
+        <h5>De route van niet je best doen</h5>
+        <p>Voor veel studenten is niet je best doen de veiligere route. Wie zich niet inzet en faalt, kan het falen buiten zichzelf leggen; wie zich wel inzet en faalt, staat met lege handen. Je best doen is daardoor angstig, en niet je best doen is een vorm van zelfbescherming. Dit is precies wat Covington (1984) beschrijft in zijn self-worth theory: de inzet terugschroeven om de eigenwaarde te beschermen tegen de betekenis van een mislukking. Zijn remedie is ook de mijne: het risico van inzet verlagen en de koppeling tussen falen en eigenwaarde losmaken. Het sluit ook aan bij mijn eigen leiderschapstheorie: wie geen erkenning en voldoening vindt, kiest een sociaal geaccepteerd alternatief, en “lui zijn en niet je best doen” is in een studentengroep vaak zo’n alternatief.</p>
+        <p>Mijn antwoord daarop is de route van je best doen aantrekkelijker en minder riskant maken. Dat doe ik langs twee lijnen. De eerste is zekerheid en vertrouwen: houvast bieden, duidelijk maken wat er te leren valt en dat de kwaliteit daarvan hoog is, zodat de rekensom voor de student wordt: je best doen, dan krijg je ook veel. In termen van de verwachting-waardetheorie (Wigfield &amp; Eccles, 2000) draai ik daarmee aan beide knoppen tegelijk: houvast en aangeleerde vaardigheden verhogen de verwachting van succes, duidelijkheid over wat er te leren valt verhoogt de waarde van de opbrengst. De tweede is de sociale waarde: prestatie een sterker gedeelde norm maken dan niet je best doen, zodat inzet erkenning oplevert in plaats van het risico om buiten de groep te vallen. Motiverend begeleiden hoort daarbij, maar altijd in combinatie met duidelijke kaders; het een zonder het ander werkt niet.</p>
+        <h5>Narratief</h5>
+        <p>Narratief gebruik ik sterk om een beeld te bouwen van waar we naartoe gaan, gekoppeld aan wat dat oplevert, ook op sociaal vlak: erkenning, trots, een serieuze rol, iets maken waar je naam op staat. Het verhaal neemt mensen mee en geeft de reden die een open opdracht als bekend veronderstelt. In de termen van de zelfdeterminatietheorie is dit de weg waarlangs extrinsieke motivatie internaliseert: het doel wordt via het verhaal en de sociale waarde het doel van de student zelf.</p>
+        <h5>Van vertrouwen naar nieuwsgierigheid</h5>
+        <p>De volgorde is voor mij wezenlijk. Eerst duidelijke vaardigheden en een helder denkkader aanleren, waardoor studenten vertrouwen ontwikkelen in wat ze kunnen. Dat is geen aanmoediging maar ervaren competentie, en volgens Bandura (1997) is dat de sterkste bron van vertrouwen in eigen kunnen; aanmoediging is de zwakste. Dat vertrouwen maakt de stap naar zelf ontdekken minder riskant, en pas dan kan ik de eigen motivatie stimuleren en de nieuwsgierigheid aanwakkeren. In termen van de zelfdeterminatietheorie: competentie en verbondenheid eerst, dan autonomie. Nieuwsgierigheid is er bij de meeste studenten wel, maar ze komt pas beschikbaar als het veilig genoeg is om je best te doen.</p>
+      </section>
 
-        <section class="les-section">
-          <h4>6. Het leerklimaat: duidelijkheid, veiligheid en narratief</h4>
-          <h5>Duidelijkheid als voorwaarde voor veiligheid</h5>
-          <p>Ik merk dat duidelijkheid in de randvoorwaarden, de situatie en de verwachtingen essentieel is voor veiligheid en daarmee voor motivatie. Studenten moeten weten waar ze aan toe zijn, wat er van hen verwacht wordt en wat er te halen valt. Dat is geen bijzaak naast de inhoud, maar de bodem waarop leren mogelijk wordt. Onduidelijkheid over de kaders roept dezelfde zelfbescherming op als onduidelijkheid over de stof: mensen trekken zich terug in plaats van te gaan onderzoeken. Wat Edmondson (1999) psychologische veiligheid noemt, het vertrouwen dat je een vraag kunt stellen of een fout kunt maken zonder daarop afgerekend te worden, begint bij mij dus bij duidelijkheid, niet bij vriendelijkheid.</p>
-          <h5>De route van niet je best doen</h5>
-          <p>Voor veel studenten is niet je best doen de veiligere route. Wie zich niet inzet en faalt, kan het falen buiten zichzelf leggen; wie zich wel inzet en faalt, staat met lege handen. Je best doen is daardoor angstig, en niet je best doen is een vorm van zelfbescherming. Dit is precies wat Covington (1984) beschrijft in zijn self-worth theory: de inzet terugschroeven om de eigenwaarde te beschermen tegen de betekenis van een mislukking. Zijn remedie is ook de mijne: het risico van inzet verlagen en de koppeling tussen falen en eigenwaarde losmaken. Het sluit ook aan bij mijn eigen leiderschapstheorie: wie geen erkenning en voldoening vindt, kiest een sociaal geaccepteerd alternatief, en “lui zijn en niet je best doen” is in een studentengroep vaak zo’n alternatief.</p>
-          <p>Mijn antwoord daarop is de route van je best doen aantrekkelijker en minder riskant maken. Dat doe ik langs twee lijnen. De eerste is zekerheid en vertrouwen: houvast bieden, duidelijk maken wat er te leren valt en dat de kwaliteit daarvan hoog is, zodat de rekensom voor de student wordt: je best doen, dan krijg je ook veel. In termen van de verwachting-waardetheorie (Wigfield &amp; Eccles, 2000) draai ik daarmee aan beide knoppen tegelijk: houvast en aangeleerde vaardigheden verhogen de verwachting van succes, duidelijkheid over wat er te leren valt verhoogt de waarde van de opbrengst. De tweede is de sociale waarde: prestatie een sterker gedeelde norm maken dan niet je best doen, zodat inzet erkenning oplevert in plaats van het risico om buiten de groep te vallen. Motiverend begeleiden hoort daarbij, maar altijd in combinatie met duidelijke kaders; het een zonder het ander werkt niet.</p>
-          <h5>Narratief</h5>
-          <p>Narratief gebruik ik sterk om een beeld te bouwen van waar we naartoe gaan, gekoppeld aan wat dat oplevert, ook op sociaal vlak: erkenning, trots, een serieuze rol, iets maken waar je naam op staat. Het verhaal neemt mensen mee en geeft de reden die een open opdracht als bekend veronderstelt. In de termen van de zelfdeterminatietheorie is dit de weg waarlangs extrinsieke motivatie internaliseert: het doel wordt via het verhaal en de sociale waarde het doel van de student zelf.</p>
-          <h5>Van vertrouwen naar nieuwsgierigheid</h5>
-          <p>De volgorde is voor mij wezenlijk. Eerst duidelijke vaardigheden en een helder denkkader aanleren, waardoor studenten vertrouwen ontwikkelen in wat ze kunnen. Dat is geen aanmoediging maar ervaren competentie, en volgens Bandura (1997) is dat de sterkste bron van vertrouwen in eigen kunnen; aanmoediging is de zwakste. Dat vertrouwen maakt de stap naar zelf ontdekken minder riskant, en pas dan kan ik de eigen motivatie stimuleren en de nieuwsgierigheid aanwakkeren. In termen van de zelfdeterminatietheorie: competentie en verbondenheid eerst, dan autonomie. Nieuwsgierigheid is er bij de meeste studenten wel, maar ze komt pas beschikbaar als het veilig genoeg is om je best te doen.</p>
-        </section>
+      <section class="les-section">
+        <h4>7. Dezelfde logica in mijn leiderschapsaanpak</h4>
+        <p>Mijn didactische visie en mijn leiderschapstheorie zijn hetzelfde model op twee schalen. Vage instructie laat studenten hangen in onduidelijkheid, en in mijn trap van eigenaarschap is dat de onderste trede: onzekerheid. Het brein voorspelt; zonder voorspelbaarheid raken mensen in de war en klimt niemand naar verantwoordelijkheid of eigenaarschap. Heldere instructie is dus niet het tegendeel van eigenaarschap maar de voorwaarde ervoor. Ik haal studenten eerst uit de onzekerheid (beeldvorming, het waarom, de kaders) en geef pas dan ruimte. Vygotsky’s zone van naaste ontwikkeling en de trap van eigenaarschap zeggen allebei dat begeleiding moet afnemen naarmate de ander verder is, en dat te vroeg loslaten niet tot autonomie leidt maar tot uitval. Houding en affectieve doelen (3.4.5) adresseer ik niet expliciet maar via modelleren (hoofdstuk 1, Brekelmans): hoe ik zelf met de stof en met de groep omga, staat model.</p>
+      </section>
 
-        <section class="les-section">
-          <h4>7. Dezelfde logica in mijn leiderschapsaanpak</h4>
-          <p>Mijn didactische visie en mijn leiderschapstheorie zijn hetzelfde model op twee schalen. Vage instructie laat studenten hangen in onduidelijkheid, en in mijn trap van eigenaarschap is dat de onderste trede: onzekerheid. Het brein voorspelt; zonder voorspelbaarheid raken mensen in de war en klimt niemand naar verantwoordelijkheid of eigenaarschap. Heldere instructie is dus niet het tegendeel van eigenaarschap maar de voorwaarde ervoor. Ik haal studenten eerst uit de onzekerheid (beeldvorming, het waarom, de kaders) en geef pas dan ruimte. Vygotsky’s zone van naaste ontwikkeling en de trap van eigenaarschap zeggen allebei dat begeleiding moet afnemen naarmate de ander verder is, en dat te vroeg loslaten niet tot autonomie leidt maar tot uitval. Houding en affectieve doelen (3.4.5) adresseer ik niet expliciet maar via modelleren (hoofdstuk 1, Brekelmans): hoe ik zelf met de stof en met de groep omga, staat model.</p>
-        </section>
+      <section class="les-section">
+        <h4>8. Waar ik sta in de stroming</h4>
+        <p>Samengevat: cognitivistisch in de opbouw van kennis, met Ausubel als hoofdlijn en Bruner voor de representatievormen en de tweede fase; sociaal-constructivistisch in de manier waarop ik motivatie en sturing organiseer (Vygotsky, zone van naaste ontwikkeling, afnemende sturing); en behavioristisch in het besef dat de sociale omgeving en de consequenties van gedrag bepalen wat studenten daadwerkelijk doen (Bandura, modelleren, bekrachtiging). De stroming waar ik het minst in thuishoor is het onbegeleide constructivisme van “het nieuwe leren” en volledig gepersonaliseerd onderwijs: dat veronderstelt een motivatie en een zelfregulatie die er bij de meeste studenten in deze levensfase nog niet zijn, en het legt de verantwoordelijkheid voor de eigen nieuwsgierigheid bij de student in plaats van bij het ontwerp van de les.</p>
+      </section>
 
-        <section class="les-section">
-          <h4>8. Waar ik sta in de stroming</h4>
-          <p>Samengevat: cognitivistisch in de opbouw van kennis, met Ausubel als hoofdlijn en Bruner voor de representatievormen en de tweede fase; sociaal-constructivistisch in de manier waarop ik motivatie en sturing organiseer (Vygotsky, zone van naaste ontwikkeling, afnemende sturing); en behavioristisch in het besef dat de sociale omgeving en de consequenties van gedrag bepalen wat studenten daadwerkelijk doen (Bandura, modelleren, bekrachtiging). De stroming waar ik het minst in thuishoor is het onbegeleide constructivisme van “het nieuwe leren” en volledig gepersonaliseerd onderwijs: dat veronderstelt een motivatie en een zelfregulatie die er bij de meeste studenten in deze levensfase nog niet zijn, en het legt de verantwoordelijkheid voor de eigen nieuwsgierigheid bij de student in plaats van bij het ontwerp van de les.</p>
-        </section>
+      <section class="les-section">
+        <h4>9. De spanningen in mijn aanpak (confrontatie door Claude)</h4>
+        <p>Een aanpak die werkt heeft ook plekken waar hij kan kantelen. Dit zijn de drie die ik zelf zie, en hoe ik ermee omga.</p>
+        <h5>Prestatie als norm kan omslaan in faalangst</h5>
+        <p>Ik wil prestatie een sterker gedeelde sociale waarde maken dan niet je best doen. Maar het woord prestatie is dubbel. In de doeloriëntatieliteratuur (Dweck, 1986) is een prestatiegericht klimaat, waarin het gaat om beter zijn dan anderen of goed overkomen, juist de aanjager van faalangst en van precies het zelfbeschermende gedrag dat ik wil wegnemen. Een beheersingsgericht klimaat, waarin inzet en vooruitgang de norm zijn, doet het omgekeerde. Wat ik bedoel is het tweede: je best doen telt, beter worden telt. Als ik “prestatie” zeg tegen een groep, kan dat landen als “wie het beste is telt”, en dan maak ik de angst groter in plaats van kleiner. De norm die ik neerzet moet dus over inzet en groei gaan, niet over ranglijst. Dat vraagt om precisie in mijn taal en in wat ik beloon: niet het beste resultaat, maar de zichtbare stap.</p>
+        <h5>Het klimaat hangt aan mij</h5>
+        <p>Narratief, houvast, de leermeesterrol, de sociale norm zetten: het werkt omdat ik in de ruimte ben en het doe. De vraag is wat ervan overblijft als studenten zelfstandig werken, zeker bij AI-opdrachten waar ze weken zonder mij aan de slag zijn. De zekerheid die ik bied moet op een gegeven moment overgaan in zekerheid die de student zelf kan maken: eigen doelen stellen, eigen voortgang zien, eigen tussenstappen bouwen. Dat is het deel dat Bruner reflectie en zelfregulatie noemt en dat in het constructivisme zwaar weegt, en het is het deel dat ik het minst expliciet doe. In mijn eigen trap van eigenaarschap is dit de overgang van afhankelijkheid naar verantwoordelijkheid: als ik te lang de zekerheid lever, blijven studenten op trede twee staan, en dan is mijn houvast het probleem geworden in plaats van de oplossing.</p>
+        <h5>Loslaten op het juiste moment</h5>
+        <p>Hieruit volgt de derde spanning: wanneer laat ik los. Te vroeg loslaten legt de taak in de frustratiezone en levert uitval op; te laat loslaten levert afhankelijkheid op. Vygotsky’s zone van naaste ontwikkeling en Van de Pols scaffolding zeggen allebei dat de hulp moet afnemen naarmate de student verder is, maar dat vraagt dat ik voortdurend inschat waar iemand staat, en bij een groep met verschillende referentiekaders is dat per student anders. Het instrument dat ik hiervoor heb is het teruggeven in eigen woorden en het bespreken van eigen voorbeelden: daaraan zie ik of het denkkader is geland en of de eigen vertaling klopt, en dus of iemand toe is aan minder houvast. Die check is daarom geen afronding van fase 1 maar de schakelaar tussen de twee fasen.</p>
+      </section>
 
-        <section class="les-section">
-          <h4>9. De spanningen in mijn aanpak (confrontatie door Claude)</h4>
-          <p>Een aanpak die werkt heeft ook plekken waar hij kan kantelen. Dit zijn de drie die ik zelf zie, en hoe ik ermee omga.</p>
-          <h5>Prestatie als norm kan omslaan in faalangst</h5>
-          <p>Ik wil prestatie een sterker gedeelde sociale waarde maken dan niet je best doen. Maar het woord prestatie is dubbel. In de doeloriëntatieliteratuur (Dweck, 1986) is een prestatiegericht klimaat, waarin het gaat om beter zijn dan anderen of goed overkomen, juist de aanjager van faalangst en van precies het zelfbeschermende gedrag dat ik wil wegnemen. Een beheersingsgericht klimaat, waarin inzet en vooruitgang de norm zijn, doet het omgekeerde. Wat ik bedoel is het tweede: je best doen telt, beter worden telt. Als ik “prestatie” zeg tegen een groep, kan dat landen als “wie het beste is telt”, en dan maak ik de angst groter in plaats van kleiner. De norm die ik neerzet moet dus over inzet en groei gaan, niet over ranglijst. Dat vraagt om precisie in mijn taal en in wat ik beloon: niet het beste resultaat, maar de zichtbare stap.</p>
-          <h5>Het klimaat hangt aan mij</h5>
-          <p>Narratief, houvast, de leermeesterrol, de sociale norm zetten: het werkt omdat ik in de ruimte ben en het doe. De vraag is wat ervan overblijft als studenten zelfstandig werken, zeker bij AI-opdrachten waar ze weken zonder mij aan de slag zijn. De zekerheid die ik bied moet op een gegeven moment overgaan in zekerheid die de student zelf kan maken: eigen doelen stellen, eigen voortgang zien, eigen tussenstappen bouwen. Dat is het deel dat Bruner reflectie en zelfregulatie noemt en dat in het constructivisme zwaar weegt, en het is het deel dat ik het minst expliciet doe. In mijn eigen trap van eigenaarschap is dit de overgang van afhankelijkheid naar verantwoordelijkheid: als ik te lang de zekerheid lever, blijven studenten op trede twee staan, en dan is mijn houvast het probleem geworden in plaats van de oplossing.</p>
-          <h5>Loslaten op het juiste moment</h5>
-          <p>Hieruit volgt de derde spanning: wanneer laat ik los. Te vroeg loslaten legt de taak in de frustratiezone en levert uitval op; te laat loslaten levert afhankelijkheid op. Vygotsky’s zone van naaste ontwikkeling en Van de Pols scaffolding zeggen allebei dat de hulp moet afnemen naarmate de student verder is, maar dat vraagt dat ik voortdurend inschat waar iemand staat, en bij een groep met verschillende referentiekaders is dat per student anders. Het instrument dat ik hiervoor heb is het teruggeven in eigen woorden en het bespreken van eigen voorbeelden: daaraan zie ik of het denkkader is geland en of de eigen vertaling klopt, en dus of iemand toe is aan minder houvast. Die check is daarom geen afronding van fase 1 maar de schakelaar tussen de twee fasen.</p>
-        </section>
+      <section class="les-section bronnen">
+        <h4>Bronnen</h4>
+        <p>Berg, B., Van Bemmel, R., &amp; Van Ast, M. (2022). Een meester in leren: Van operant conditioneren tot metacognitie (1e druk). Een Meester in Leren. ISBN 9789464432855. Hoofdstuk 1 (behaviorisme), 2 (cognitivisme) en 3 (constructivisme).</p>
+        <p>Bandura, A. (1997). Self-efficacy: The exercise of control. W. H. Freeman.</p>
+        <p>Casey, B. J., Getz, S., &amp; Galvan, A. (2008). The adolescent brain. Developmental Review, 28(1), 62-77.</p>
+        <p>Covington, M. V. (1984). The self-worth theory of achievement motivation: Findings and implications. The Elementary School Journal, 85(1), 5-20.</p>
+        <p>Deci, E. L., &amp; Ryan, R. M. (2000). The “what” and “why” of goal pursuits: Human needs and the self-determination of behavior. Psychological Inquiry, 11(4), 227-268.</p>
+        <p>Dweck, C. S. (1986). Motivational processes affecting learning. American Psychologist, 41(10), 1040-1048.</p>
+        <p>Edmondson, A. (1999). Psychological safety and learning behavior in work teams. Administrative Science Quarterly, 44(2), 350-383.</p>
+        <p>Kirschner, P. A., Sweller, J., &amp; Clark, R. E. (2006). Why minimal guidance during instruction does not work: An analysis of the failure of constructivist, discovery, problem-based, experiential, and inquiry-based teaching. Educational Psychologist, 41(2), 75-86.</p>
+        <p>Rock, D. (2008). SCARF: A brain-based model for collaborating with and influencing others. NeuroLeadership Journal, 1.</p>
+        <p>Steinberg, L. (2008). A social neuroscience perspective on adolescent risk-taking. Developmental Review, 28(1), 78-106.</p>
+        <p>Wigfield, A., &amp; Eccles, J. S. (2000). Expectancy-value theory of achievement motivation. Contemporary Educational Psychology, 25(1), 68-81.</p>
+        <p><em>Alle referenties zijn gecontroleerd op auteurs, titel, jaar, tijdschrift en paginanummers. Voor het handboek geldt: de eerste druk is van 2022; er is ook een oplage van maart 2024 in omloop, controleer de druk van je eigen exemplaar. Auteursvermeldingen “Van Ast et al., 2020” in de hoofdstukken verwijzen naar een ander werk van Michel van Ast, niet naar dit handboek.</em></p>
+      </section>
 
-        <section class="les-section bronnen">
-          <h4>Bronnen</h4>
-          <p>Berg, B., Van Bemmel, R., &amp; Van Ast, M. (2022). Een meester in leren: Van operant conditioneren tot metacognitie (1e druk). Een Meester in Leren. ISBN 9789464432855. Hoofdstuk 1 (behaviorisme), 2 (cognitivisme) en 3 (constructivisme).</p>
-          <p>Bandura, A. (1997). Self-efficacy: The exercise of control. W. H. Freeman.</p>
-          <p>Casey, B. J., Getz, S., &amp; Galvan, A. (2008). The adolescent brain. Developmental Review, 28(1), 62-77.</p>
-          <p>Covington, M. V. (1984). The self-worth theory of achievement motivation: Findings and implications. The Elementary School Journal, 85(1), 5-20.</p>
-          <p>Deci, E. L., &amp; Ryan, R. M. (2000). The “what” and “why” of goal pursuits: Human needs and the self-determination of behavior. Psychological Inquiry, 11(4), 227-268.</p>
-          <p>Dweck, C. S. (1986). Motivational processes affecting learning. American Psychologist, 41(10), 1040-1048.</p>
-          <p>Edmondson, A. (1999). Psychological safety and learning behavior in work teams. Administrative Science Quarterly, 44(2), 350-383.</p>
-          <p>Kirschner, P. A., Sweller, J., &amp; Clark, R. E. (2006). Why minimal guidance during instruction does not work: An analysis of the failure of constructivist, discovery, problem-based, experiential, and inquiry-based teaching. Educational Psychologist, 41(2), 75-86.</p>
-          <p>Rock, D. (2008). SCARF: A brain-based model for collaborating with and influencing others. NeuroLeadership Journal, 1.</p>
-          <p>Steinberg, L. (2008). A social neuroscience perspective on adolescent risk-taking. Developmental Review, 28(1), 78-106.</p>
-          <p>Wigfield, A., &amp; Eccles, J. S. (2000). Expectancy-value theory of achievement motivation. Contemporary Educational Psychology, 25(1), 68-81.</p>
-          <p><em>Alle referenties zijn gecontroleerd op auteurs, titel, jaar, tijdschrift en paginanummers. Voor het handboek geldt: de eerste druk is van 2022; er is ook een oplage van maart 2024 in omloop, controleer de druk van je eigen exemplaar. Auteursvermeldingen “Van Ast et al., 2020” in de hoofdstukken verwijzen naar een ander werk van Michel van Ast, niet naar dit handboek.</em></p>
-        </section>
-        </details>
-
-        <div class="les-actions">
-          <a class="doc-link" href="bestanden/didactische-visie-cognitivisme.docx" download="Didactische visie - mijn positie in het cognitivisme.docx">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg>
-            Origineel downloaden (Word, 30 kB)
-          </a>
-        </div>
+      <div class="les-actions">
+        <a class="les-back" href="#verwerkingen"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg> Alle lessen</a>
+        <a class="doc-link" href="bestanden/didactische-visie-cognitivisme.docx" download="Didactische visie - mijn positie in het cognitivisme.docx"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" x2="12" y1="15" y2="3"/></svg> Origineel downloaden (Word, 30 kB)</a>
       </div>
     </div>
   </article>
@@ -1389,23 +1442,44 @@
     var bar = target.parentNode;
     if (bar.scrollWidth > bar.clientWidth) bar.scrollLeft = Math.max(0, target.offsetLeft - bar.offsetLeft - 24);
     if (focus) target.focus();
+    return target;
   }
 
-  function fromUrl() { show(location.hash.slice(1)); }
+  function openLes(id) {
+    var panel = document.getElementById('panel-verwerkingen');
+    var open = null;
+    panel.querySelectorAll('.les-detail').forEach(function (a) {
+      a.hidden = a.id !== id;
+      if (!a.hidden) open = a;
+    });
+    panel.querySelector('.les-overview').hidden = !!open;
+    return open;
+  }
+
+  function route() {
+    var parts = location.hash.slice(1).split('/');
+    var tab = show(parts[0]);
+    return openLes(tab.dataset.hash === 'verwerkingen' ? parts[1] : null);
+  }
+
+  function go(hash) {
+    if (location.hash !== '#' + hash) history.pushState(null, '', '#' + hash);
+    var les = route();
+    var panel = document.querySelector('.panel:not([hidden])');
+    if (panel.getBoundingClientRect().top < 60) panel.scrollIntoView();
+    if (les) les.querySelector('h3').focus({ preventScroll: true });
+  }
 
   tabs.forEach(function (t, i) {
-    t.addEventListener('click', function () {
-      if (t.getAttribute('aria-selected') === 'true') return;
-      show(t.dataset.hash);
-      history.pushState(null, '', '#' + t.dataset.hash);
-    });
+    t.addEventListener('click', function () { go(t.dataset.hash); });
     t.addEventListener('keydown', function (e) {
       var step = e.key === 'ArrowRight' ? 1 : e.key === 'ArrowLeft' ? -1 : 0;
       if (!step) return;
       e.preventDefault();
       var next = tabs[(i + step + tabs.length) % tabs.length];
-      show(next.dataset.hash, true);
       history.replaceState(null, '', '#' + next.dataset.hash);
+      route();
+      next.focus();
     });
   });
 
@@ -1413,19 +1487,14 @@
     var a = e.target.closest('a[href^="#"]');
     if (!a) return;
     var hash = a.getAttribute('href').slice(1);
-    if (!tabs.some(function (t) { return t.dataset.hash === hash; })) return;
+    var base = hash.split('/')[0];
+    if (!tabs.some(function (t) { return t.dataset.hash === base; })) return;
     e.preventDefault();
-    show(hash);
-    history.pushState(null, '', '#' + hash);
-    document.querySelector('.tabs').scrollIntoView();
+    go(hash);
   });
 
-  window.addEventListener('beforeprint', function () {
-    document.querySelectorAll('details').forEach(function (d) { d.open = true; });
-  });
-
-  window.addEventListener('popstate', fromUrl);
-  fromUrl();
+  window.addEventListener('popstate', route);
+  route();
 })();
 </script>
 
